@@ -1,0 +1,26 @@
+.main-title {
+  font-size: 2rem;
+}
+.lead {
+  font-size: 1.2rem;
+}
+
+
+@media (max-width: 576px) {
+  .main-title {
+    font-size: 1.3rem;
+  }
+  .lead {
+    font-size: 1rem;
+  }
+}
+
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .main-title {
+    font-size: 1.7rem;
+  }
+  .lead {
+    font-size: 1.1rem;
+  }
+}
