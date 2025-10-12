@@ -1,55 +1,59 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #fef6e4;
-    color: #4b3b2b;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  background: #fef6e4;
+  color: #4b3b2b;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
 
-a {
-    text-decoration: none;
-    color: #a67338;
+.card, .contact-form-section {
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(166,124,82,0.13);
+  transition: box-shadow 0.4s, transform 0.4s;
+}
+.card:hover, .contact-form-section:hover {
+  box-shadow: 0 16px 40px rgba(124,94,47,0.18);
+  transform: translateY(-4px) scale(1.025);
 }
 
-a:hover {
-    color: #7c5e2f;
+.contact-form input:focus, .contact-form textarea:focus,
+.form-control:focus {
+  border-color: #cd853f;
+  background-color: #fcf3e6;
+  outline: 2px solid #a67c52;
 }
 
-.logo-img {
-    width: 45px;
-    height: 45px;
-    border-radius: 12px;
-    object-fit: cover;
-    margin-right: 8px;
-    background: #231f20;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+h1, h2, h3 {
+  letter-spacing: 1.2px;
+  color: #7c5e2f;
+  font-weight: 700;
 }
 
-.site-title {
-    font-weight: bold;
-    font-size: 1.6rem;
-    color: #fff;
-    letter-spacing: 0.5px;
-    vertical-align: middle;
+.nav-menu {
+  display: flex;
+  gap: 24px;
+}
+.nav-menu a {
+  font-family: inherit;
+  border-radius: 9px;
+  padding: 11px 18px;
+  font-weight: 500;
+  transition: background-color 0.3s, box-shadow .18s;
+  color: #f3e9d2;
+  background-color: transparent;
+  box-shadow: 0 2px 8px rgba(124,94,47,0.03);
+  margin: 0 2px;
+}
+.nav-menu a.active, .nav-menu a:hover {
+  background-color: #a67c52;
+  color: #fff;
+  box-shadow: 0 5px 18px rgba(124,94,47,0.10);
 }
 
-footer {
-    background-color: #3e2723;
-    color: #fff;
-    text-align: center;
-    padding: 15px 0;
-    font-weight: 600;
-}
-
-aside h2, .sidebar h2 {
-    color: #a67338;
-    margin-top: 0;
-}
-
-.card-img-top {
-    border-radius: 10px;
-}
-
-.custom-card img {
-    border-radius: 8px;
+.contact-form-section, .sidebar {
+  border-left: 4px solid #a67338;
+  background: #fff;
 }
 
 @media (max-width: 900px) {
@@ -79,5 +83,3 @@ h1, h2, h3, h4, h5, h6, p {
 .gallery-container img:hover {
     transform: scale(2);
 }
-
-
