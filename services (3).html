@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café Asphalt-8 | Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">☕ Café Asphalt-8</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="services.html">Services</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>Welcome to Café Asphalt-8</h1>
+      <p>Your perfect stop for rich coffee, tasty pastries, and a cozy vibe.</p>
+    </section>
+
+    <section id="services" class="services">
+      <h2>Our Specialties</h2>
+      <div class="card-row">
+        <div class="card">
+          <img src="espresso.jpg" alt="Espresso">
+          <h3>Espresso</h3>
+          <p>Strong and aromatic coffee for real enthusiasts.</p>
+          <button>Order Now</button>
+        </div>
+        <div class="card">
+          <img src="croissant.jpg" alt="Croissant">
+          <h3>Croissants</h3>
+          <p>Freshly baked, buttery and soft pastries every morning.</p>
+          <button>See Menu</button>
+        </div>
+        <div class="card">
+          <img src="desserts.jpg" alt="Dessert">
+          <h3>Desserts</h3>
+          <p>Sweet treats that pair perfectly with our signature drinks.</p>
+          <button>Try One</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-header">Where are you located?</button>
+          <div class="accordion-content">We’re located downtown, near the central park — open every day from 8AM to 10PM.</div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">Do you have dairy-free options?</button>
+          <div class="accordion-content">Yes! We offer almond, soy, and oat milk for all drinks.</div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">Can I host an event at Café Asphalt-8?</button>
+          <div class="accordion-content">Absolutely — we provide space reservations for private or group events.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 | Café Asphalt-8 | Team: “Makan” — Assanali, Askhat, Asylkhan</p>
+  </footer>
+
+  <script>
+    const accordions = document.querySelectorAll(".accordion-header");
+    accordions.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const content = btn.nextElementSibling;
+        content.classList.toggle("active");
+      });
+    });
+  </script>
+</body>
+</html>
