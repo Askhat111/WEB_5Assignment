@@ -1,0 +1,66 @@
+// --- Карусель ---
+document.addEventListener('DOMContentLoaded', function() {
+  const track = document.querySelector('.carousel-track');
+  if(track){
+    const slides = Array.from(track.children);
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+    const nextBtn = document.querySelector('.carousel-btn.next');
+    let idx = 0;
+    
+    function updateSlide() {
+      track.style.transform = `translateX(-${idx * 100}%)`;
+    }
+    
+    if(nextBtn && prevBtn){
+      nextBtn.addEventListener('click', () => {
+        idx = (idx + 1) % slides.length;
+        updateSlide();
+      });
+      prevBtn.addEventListener('click', () => {
+        idx = (idx - 1 + slides.length) % slides.length;
+        updateSlide();
+      });
+    }
+    
+    updateSlide();
+  }
+});
+
+// --- Кнопка смены цвета фона ---
+document.addEventListener('DOMContentLoaded', function() {
+  let btn = document.getElementById('colorBtn');
+  let colorIndex = 0;
+  const colors = ['#fdf6f0', '#f5e9da', '#ffe4c4', '#e8c1a0', '#d4af7a', '#795785', '#e3a978', '#c3346d'];
+
+  if(btn) {
+    btn.onclick = function() {
+      colorIndex = (colorIndex + 1) % colors.length;
+      let mainBlock = document.querySelector('.main');
+      if (mainBlock) {
+        mainBlock.style.background = colors[colorIndex];
+      }
+    };
+  }
+});
+
+// --- Динамически показывать дату и время ---
+document.addEventListener('DOMContentLoaded', function() {
+  function updateDateTime() {
+    const now = new Date();
+  
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    };
+
+    const formattedDate = now.toLocaleString('en-US', options);
+    document.getElementById('datetime').textContent = formattedDate;
+  }
+
+  updateDateTime();
+  setInterval(updateDateTime, 60000);
+});
+
