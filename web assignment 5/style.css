@@ -1,0 +1,145 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #fdf6f0;
+  color: #3e2723;
+}
+
+header {
+  background-color: #6f4e37;
+  color: #fff;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+nav a {
+  color: #ffe0b2;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+nav a:hover {
+  color: #ffcc80;
+  text-decoration: underline;
+}
+
+.intro {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.services {
+  text-align: center;
+  padding: 50px 20px;
+}
+.card-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+.card {
+  background: #fff;
+  border-radius: 10px;
+  width: 280px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.card h3 {
+  margin: 10px 0;
+}
+.card button {
+  margin: 10px;
+  background-color: #6f4e37;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.card button:hover {
+  background-color: #5d3c29;
+}
+
+.accordion {
+  max-width: 700px;
+  margin: 40px auto;
+}
+.accordion-header {
+  background: #6f4e37;
+  color: white;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 1em;
+}
+.accordion-content {
+  background: #fff;
+  padding: 15px;
+  border-radius: 0 0 5px 5px;
+  display: none;
+}
+.accordion-content.active {
+  display: block;
+}
+
+.gallery {
+  text-align: center;
+  padding: 40px 20px;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+.gallery-grid img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+footer {
+  text-align: center;
+  background-color: #3e2723;
+  color: white;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+  body {
+    background: #ffe0b2;
+  }
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+  nav {
+    margin-top: 10px;
+  }
+}
