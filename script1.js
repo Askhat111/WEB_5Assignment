@@ -77,27 +77,5 @@ subscribeForm.addEventListener('submit', function(event) {
       alert('Thank you for subscribing!');
     });
   }
-
-  //4
-  const colorBtn = document.getElementById('colorBtn');
-  if (colorBtn) {
-    const colors = ['#fef6e4', '#fcd5ce', '#d6e2e9', '#b5ead7', '#e0c3fc', '#caf7e3'];
-    colorBtn.onclick = function() {
-      document.body.style.backgroundColor =
-        colors[Math.floor(Math.random() * colors.length)];
-    };
-  }
-
-  //5
-  const dateTimeBlock = document.getElementById('dateTimeBlock');
-  if (dateTimeBlock) {
-    function updateDateTime() {
-      const now = new Date();
-      dateTimeBlock.textContent =
-        now.toLocaleString('en-US', { dateStyle: 'long', timeStyle: 'short' });
-    }
-    setInterval(updateDateTime, 1000);
-    updateDateTime();
-  }
 });
 
