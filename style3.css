@@ -5,6 +5,10 @@ body {
   margin: 0;
   padding: 0;
 }
+.welcome-section,
+.about-section {
+    text-align: center;
+}
 
 .header {
   display: flex;
@@ -135,7 +139,7 @@ body {
   background: #3e2723;
   color: #fff4e7;
   text-align: center;
-  padding: 16px 0;
+  padding: 8px 0;
 }
 
 .gallery {
@@ -209,4 +213,69 @@ body {
     align-items: center;
     gap: 20px;
   }
+}
+.carousel {
+  position: relative;
+  max-width: 650px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 16px rgba(60,40,20,0.13);
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+.carousel-track img {
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+  height: 320px;
+  border-radius: 8px;
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(60,40,20,0.5);
+  color: #fff;
+  border: none;
+  font-size: 2em;
+  padding: 6px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1;
+}
+.carousel-btn.prev { left: 12px; }
+.carousel-btn.next { right: 12px; }
+.carousel-btn:active, .carousel-btn:hover {
+  background: #6f4e37;
+}
+@media (max-width: 900px) {
+  .carousel-track img {
+    height: 220px;
+  }
+}
+@media (max-width: 600px) {
+  .carousel {
+    max-width: 98vw;
+  }
+  .carousel-track img {
+    height: 160px;
+  }
+}
+@media (max-width: 900px) {
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+  .container, .layout { grid-template-columns: 1fr; }
+  .main, aside, header, footer { padding: 12px; }
+  .card-row { flex-direction: column; gap: 20px; align-items: center; }
+}
+@media (max-width: 600px) {
+  .gallery { grid-template-columns: 1fr; }
+  .carousel { max-width: 98vw; }
+  .menu-header { font-size: 1.2em; }
 }
