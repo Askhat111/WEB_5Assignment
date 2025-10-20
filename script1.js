@@ -56,11 +56,7 @@ closePopupBtn.onclick = function() {
   popupForm.style.display = 'none';
 };
 
-window.onclick = function(event) {
-  if (event.target == popupForm) {
-    popupForm.style.display = 'none';
-  }
-};
+
 
 subscribeForm.addEventListener('submit', function(event) {
   event.preventDefault();
@@ -79,3 +75,49 @@ subscribeForm.addEventListener('submit', function(event) {
   }
 });
 
+//6-th Assignment
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  //1
+  const blogCards = document.querySelectorAll('.blog-card');
+  blogCards.forEach(card => {
+    const stars = card.querySelectorAll('.star');
+    let currentRating = 0;
+
+    stars.forEach((star, idx) => {
+      star.style.cursor = 'pointer';
+      star.addEventListener('click', () => {
+        currentRating = idx + 1;
+        stars.forEach((s, i) => {
+          s.style.color = i < currentRating ? '#8d6748' : '#ddd';
+        });
+        
+        const text = card.querySelector('.rating-text');
+        if (text) text.textContent = `Your rating: ${currentRating} / 5`;
+      
+        card.classList.add('highlight');
+        setTimeout(() => card.classList.remove('highlight'), 500);
+      });
+    });
+  });
+
+  //2
+  const readMoreButtons = document.querySelectorAll('.read-more-btn');
+  readMoreButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const extraContent = button.previousElementSibling;
+      const isVisible = extraContent.style.display === 'block';
+      extraContent.style.display = isVisible ? 'none' : 'block';
+      button.textContent = isVisible ? "Read More" : "Show Less";
+    });
+  });
+
+  //3
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('night-theme');
+    });
+  }
+});
