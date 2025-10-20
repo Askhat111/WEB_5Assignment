@@ -1,4 +1,4 @@
-// --- Карусель ---
+
 document.addEventListener('DOMContentLoaded', function() {
   const track = document.querySelector('.carousel-track');
   if(track){
@@ -26,24 +26,24 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// --- Кнопка смены цвета фона ---
+
 document.addEventListener('DOMContentLoaded', function() {
   let btn = document.getElementById('colorBtn');
   let colorIndex = 0;
-  const colors = ['#fdf6f0', '#f5e9da', '#ffe4c4', '#e8c1a0', '#d4af7a', '#795785', '#e3a978', '#c3346d'];
+  const bgcolors = ['#fdf6f0', '#f5e9da', '#ffe4c4', '#e8c1a0', '#d4af7a', '#795785', '#e3a978', '#c3346d'];
 
   if(btn) {
     btn.onclick = function() {
-      colorIndex = (colorIndex + 1) % colors.length;
+      colorIndex = (colorIndex + 1) % bgcolors.length;
       let mainBlock = document.querySelector('.main');
       if (mainBlock) {
-        mainBlock.style.background = colors[colorIndex];
+        mainBlock.style.background = bgcolors[colorIndex];
       }
     };
   }
 });
 
-// --- Динамически показывать дату и время ---
+
 document.addEventListener('DOMContentLoaded', function() {
   function updateDateTime() {
     const now = new Date();
@@ -63,4 +63,40 @@ document.addEventListener('DOMContentLoaded', function() {
   updateDateTime();
   setInterval(updateDateTime, 60000);
 });
+
+
+const button = document.getElementById('show-time-btn');
+const output = document.getElementById('time-output');
+
+button.addEventListener('click', function() {
+  const now = new Date().toLocaleTimeString();
+  output.textContent = 'Current time ' + now;
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const sidebarItems = document.querySelectorAll('.sidebar ul li');
+  let sidebarIndex = 0;
+
+  if(sidebarItems.length > 0){
+    sidebarItems[sidebarIndex].classList.add('active');
+    document.addEventListener('keydown', function(e) {
+      sidebarItems[sidebarIndex].classList.remove('active');
+      if (e.key === 'ArrowDown') {
+        sidebarIndex = (sidebarIndex + 1) % sidebarItems.length;
+      } else if (e.key === 'ArrowUp') {
+        sidebarIndex = (sidebarIndex - 1 + sidebarItems.length) % sidebarItems.length;
+      } else if (e.key === 'Enter') {
+        const link = sidebarItems[sidebarIndex].querySelector('a');
+        if(link) {
+          window.location.href = link.href;
+        }
+      }
+      sidebarItems[sidebarIndex].classList.add('active');
+    });
+  }
+});
+
+
 
