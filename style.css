@@ -119,6 +119,64 @@ footer span, footer small {
   color: inherit;
 }
 
+.night-theme {
+  background-color: #2e2e2e;
+  color: #ddd;
+}
+.night-theme .card,
+.night-theme .navbar,
+.night-theme footer {
+  background-color: #3a3a3a;
+  color: #eee;
+}
+.blog-card.highlight {
+  animation: highlightAnim 0.5s ease;
+}
+
+.blog-card {
+  max-width: 900px;       
+  margin: 32px auto;     
+  padding: 28px 32px;     
+  background: #fff;       
+  border-radius: 18px;    
+  box-shadow: 0 8px 32px rgba(80,50,27,0.08);
+}
+
+.card-img-top {
+  width: 100%;       
+  max-width: 600px;   
+  height: auto;       
+  display: block;     
+  margin: 0 auto;
+  border-radius: 14px; 
+}
+
+.star {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.star:hover {
+  color: #8d6748;
+}
+.extra-content {
+  margin-top: 8px;
+}
+
+@keyframes highlightAnim {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 transparent;
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #9c6d45;
+  }
+}
+
+.highlight {
+  animation: highlightAnim 0.5s ease;
+}
+
 @media (max-width: 900px) {
     footer {
         font-size: 1rem;
