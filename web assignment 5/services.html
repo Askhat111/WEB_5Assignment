@@ -1,47 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Café Asphalt-8 | Home</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Café Asphalt-8 | Services</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <div class="logo">☕ Café Asphalt-8</div>
     <nav>
-      <a href="index.html">Home</a>
+      <a href="index.html">Services</a>
       <a href="gallery.html">Gallery</a>
-      <a href="services.html">Services</a>
       <a href="#faq">FAQ</a>
+      <select id="language-select">
+        <option value="en">EN</option>
+        <option value="ru">RU</option>
+      </select>
     </nav>
   </header>
 
   <main>
     <section class="intro">
-      <h1>Welcome to Café Asphalt-8</h1>
-      <p>Your perfect stop for rich coffee, tasty pastries, and a cozy vibe.</p>
+      <h1 id="greeting">Welcome to Café Asphalt-8</h1>
+      <p id="intro-text">Your perfect stop for rich coffee, tasty pastries, and a cozy vibe.</p>
     </section>
 
     <section id="services" class="services">
-      <h2>Our Specialties</h2>
+      <h2 id="service-title">Our Specialties</h2>
       <div class="card-row">
         <div class="card">
-          <img src="espresso.jpg" alt="Espresso">
+          <img src="espresso.jpg" alt="Espresso" />
           <h3>Espresso</h3>
-          <p>Strong and aromatic coffee for real enthusiasts.</p>
+          <p id="espresso-desc">Strong and aromatic coffee for real enthusiasts.</p>
           <button>Order Now</button>
         </div>
         <div class="card">
-          <img src="croissant.jpg" alt="Croissant">
+          <img src="croissant.jpg" alt="Croissant" />
           <h3>Croissants</h3>
-          <p>Freshly baked, buttery and soft pastries every morning.</p>
+          <p id="croissant-desc">Freshly baked, buttery and soft pastries every morning.</p>
           <button>See Menu</button>
         </div>
         <div class="card">
-          <img src="desserts.jpg" alt="Dessert">
+          <img src="desserts.jpg" alt="Desserts" />
           <h3>Desserts</h3>
-          <p>Sweet treats that pair perfectly with our signature drinks.</p>
+          <p id="desserts-desc">Sweet treats that pair perfectly with our signature drinks.</p>
           <button>Try One</button>
         </div>
       </div>
@@ -54,17 +57,26 @@
           <button class="accordion-header">Where are you located?</button>
           <div class="accordion-content">We’re located downtown, near the central park — open every day from 8AM to 10PM.</div>
         </div>
-
         <div class="accordion-item">
           <button class="accordion-header">Do you have dairy-free options?</button>
           <div class="accordion-content">Yes! We offer almond, soy, and oat milk for all drinks.</div>
         </div>
-
         <div class="accordion-item">
           <button class="accordion-header">Can I host an event at Café Asphalt-8?</button>
           <div class="accordion-content">Absolutely — we provide space reservations for private or group events.</div>
         </div>
       </div>
+    </section>
+
+    <section class="contact">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <p id="formMessage"></p>
     </section>
   </main>
 
@@ -72,14 +84,6 @@
     <p>© 2025 | Café Asphalt-8 | Team: “Makan” — Assanali, Askhat, Asylkhan</p>
   </footer>
 
-  <script>
-    const accordions = document.querySelectorAll(".accordion-header");
-    accordions.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const content = btn.nextElementSibling;
-        content.classList.toggle("active");
-      });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
