@@ -1,4 +1,3 @@
-// --- Карусель ---
 document.addEventListener('DOMContentLoaded', function() {
   const track = document.querySelector('.carousel-track');
   if(track){
@@ -26,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// --- Кнопка смены цвета фона ---
 document.addEventListener('DOMContentLoaded', function() {
   let btn = document.getElementById('colorBtn');
   let colorIndex = 0;
@@ -43,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// --- Динамически показывать дату и время ---
 document.addEventListener('DOMContentLoaded', function() {
   function updateDateTime() {
     const now = new Date();
