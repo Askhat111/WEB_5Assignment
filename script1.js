@@ -121,3 +121,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+document.querySelectorAll('.star').forEach(star => {
+  star.addEventListener('click', () => {
+    const sound = new Audio("sound/click.mp3");
+    sound.play();
+  });
+});
+
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  const sound = new Audio("sound/click.mp3");
+  sound.play();
+});
