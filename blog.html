@@ -20,13 +20,12 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-<div class="container mb-4">
+<div class="container mb-4 position-relative" style="max-width:900px;">
   <input id="searchInput" type="text" class="form-control mb-2" placeholder="Search blog posts...">
-  <div id="suggestions" class="bg-white border rounded" style="display:none; position:absolute; z-index:1000;"></div>
+  <div id="suggestions" class="bg-white border rounded" style="display:none; position:absolute; top:52px; left:0; width:100%; z-index:1000;"></div>
   <button id="highlightBtn" class="btn btn-outline-primary mt-2 mb-4">Highlight Matches</button>
   <button id="notifyBtn" class="btn btn-success mt-2 mb-4">Show Notification</button>
 </div>
-
 
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
@@ -87,73 +86,83 @@
           <div class="accordion-content" style="display:none;">Reservations are not required, but you can call ahead for groups.</div>
         </div>
         
-        <div class="row mb-4">
-          <div class="col-lg-6 col-md-12 bg-light p-4 rounded shadow">
-            <h4>About Asphalt-8 Cafe</h4>
-            <p>Discover our cafe’s journey, vision, and the unique experience we bring to all coffee lovers in town.</p>
-          </div>
-          <div class="col-lg-6 col-md-12 bg-light p-4 rounded shadow d-flex align-items-center justify-content-center">
-            <img src="cafe-interior.jpg" class="img-fluid rounded" alt="Cafe Front Photo" style="max-height: 180px;">
-          </div>
+       <div class="container mt-4">
+  <div class="row mb-4">
+    
+    <div class="col-lg-4 col-md-6 mb-3">
+      <div class="card h-100 shadow">
+        <img src="espresso.jpg" class="card-img-top" alt="Espresso Shots" />
+        <div class="card-body">
+          <h5 class="card-title">Espresso Perfection</h5>
+          <p class="card-text">Taste our signature espresso, made from handpicked beans.</p>
+          <p class="extra-content" style="display:none;">Enjoy info about how our beans are selected and roasted for perfect flavor in every cup!</p>
+          <button class="read-more-btn btn btn-sm btn-outline-secondary">Read More</button>
         </div>
-        
-        <div class="row mb-4">
-          <div class="col-lg-4 col-md-6 mb-3">
-            <div class="card h-100 shadow">
-              <img src="espresso.jpg" class="card-img-top" alt="Espresso Shots">
-              <div class="card-body">
-                <h5 class="card-title">Espresso Perfection</h5>
-                <p class="card-text">Taste our signature espresso, made from handpicked beans.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-3">
-            <div class="card h-100 shadow">
-              <img src="croissant.jpg" class="card-img-top" alt="Pastry">
-              <div class="card-body">
-                <h5 class="card-title">Fresh Pastries</h5>
-                <p class="card-text">Daily fresh-baked croissants, muffins, and cakes.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-12 mb-3">
-            <div class="card h-100 shadow">
-              <img src="team.jpg" class="card-img-top" alt="Community Event">
-              <div class="card-body">
-                <h5 class="card-title">Our Community</h5>
-                <p class="card-text">Join barista workshops, art nights, and more events.</p>
-              </div>
-            </div>
-          </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-3">
+      <div class="card h-100 shadow">
+        <img src="croissant.jpg" class="card-img-top" alt="Fresh Pastries" />
+        <div class="card-body">
+          <h5 class="card-title">Fresh Pastries</h5>
+          <p class="card-text">Daily fresh-baked croissants, muffins, and cakes.</p>
+          <p class="extra-content" style="display:none;">Bakery specials change every week—discover something new every visit!</p>
+          <button class="read-more-btn btn btn-sm btn-outline-secondary">Read More</button>
         </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-3">
+      <div class="card h-100 shadow">
+        <img src="team.jpg" class="card-img-top" alt="Our Community" />
+        <div class="card-body">
+          <h5 class="card-title">Our Community</h5>
+          <p class="card-text">Join barista workshops, art nights, and more events.</p>
+          <p class="extra-content" style="display:none;">We host weekly meetups and masterclasses for coffee lovers and creatives.</p>
+          <button class="read-more-btn btn btn-sm btn-outline-secondary">Read More</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-3">
+      <div class="card h-100 shadow">
+        <img src="coffee-beans.jpg" class="card-img-top" alt="Coffee Beans" />
+        <div class="card-body">
+          <h5 class="card-title">Our Journey with Coffee</h5>
+          <p class="card-text">Welcome to our cafe blog where we share coffee stories, recipes, and events!</p>
+          <p class="extra-content" style="display:none;">Read stories about sourcing, brewing, and the culture of cafe society.</p>
+          <button class="read-more-btn btn btn-sm btn-outline-secondary">Read More</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-3">
+      <div class="card h-100 shadow">
+        <img src="latte-art.jpg" class="card-img-top" alt="Latte Art" />
+        <div class="card-body">
+          <h5 class="card-title">Seasonal Specials</h5>
+          <p class="card-text">Discover our new autumn menu with unique flavors.</p>
+          <p class="extra-content" style="display:none;">Try our limited-edition beverages, only available this season!</p>
+          <button class="read-more-btn btn btn-sm btn-outline-secondary">Read More</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-3">
+      <div class="card h-100 shadow">
+        <img src="cafe-interior.jpg" class="card-img-top" alt="Cafe Interior" />
+        <div class="card-body">
+          <h5 class="card-title">Barista Spotlight</h5>
+          <p class="card-text">Meet Macan, the artist behind our beautiful latte art.</p>
+          <p class="extra-content" style="display:none;">Every month we feature a new talent and their favorite coffee creations.</p>
+          <button class="read-more-btn btn btn-sm btn-outline-secondary">Read More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <div class="card-group mb-5">
-          <div class="card mx-2">
-            <img src="coffee-beans.jpg" class="card-img-top" alt="Coffee Beans" />
-            <div class="card-body">
-              <h5 class="card-title">Our Journey with Coffee</h5>
-              <p class="card-text">Welcome to our cafe blog where we share coffee stories, recipes, and events!</p>
-              <button class="btn btn-primary">Read More</button>
-            </div>
-          </div>
-          <div class="card mx-2">
-            <img src="latte-art.jpg" class="card-img-top" alt="Latte Art" />
-            <div class="card-body">
-              <h5 class="card-title">Seasonal Specials</h5>
-              <p class="card-text">Discover our new autumn menu with unique flavors.</p>
-              <button class="btn btn-primary">Read More</button>
-            </div>
-          </div>
-          <div class="card mx-2">
-            <img src="cafe-interior.jpg" class="card-img-top" alt="Cafe Interior" />
-            <div class="card-body">
-              <h5 class="card-title">Barista Spotlight</h5>
-              <p class="card-text">Meet Macan, the artist behind our beautiful latte art.</p>
-              <button class="btn btn-primary">Read More</button>
-            </div>
-          </div>
-        </div>
-        
         <div class="btn-group mb-5" role="group" aria-label="Blog Actions">
           <button type="button" class="btn btn-outline-secondary">Share🌍</button>
           <button type="button" class="btn btn-outline-secondary">Comment💬</button>
