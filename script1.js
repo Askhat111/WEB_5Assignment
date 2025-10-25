@@ -1,14 +1,14 @@
-//1
-document.addEventListener('DOMContentLoaded', function() {
-  const myForm = document.querySelector('form');
+document.addEventListener("DOMContentLoaded", function () {
+ 
+  const myForm = document.querySelector("form");
   if (myForm) {
-    myForm.addEventListener('submit', function(e) {
+    myForm.addEventListener("submit", function (e) {
       let valid = true;
       let errors = [];
-      const name = document.getElementById('name');
-      const email = document.getElementById('email');
-      const message = document.getElementById('message');
-      if (!name || !email || !message) return; 
+      const name = document.getElementById("name");
+      const email = document.getElementById("email");
+      const message = document.getElementById("message");
+      if (!name || !email || !message) return;
 
       if (!name.value) {
         valid = false;
@@ -29,107 +29,179 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  //2
-  document.querySelectorAll('.accordion-toggle').forEach(toggle => {
-    toggle.addEventListener('click', function() {
+  document.querySelectorAll(".accordion-toggle").forEach((toggle) => {
+    toggle.addEventListener("click", function () {
       const content = this.nextElementSibling;
-      if (content.style.display === "block") {
-        content.style.display = "none";
-        content.style.maxHeight = null;
-      } else {
-        content.style.display = "block";
-        content.style.maxHeight = content.scrollHeight + "px";
-      }
+      const isOpen = content.style.display === "block";
+      content.style.display = isOpen ? "none" : "block";
+      content.style.maxHeight = isOpen ? null : content.scrollHeight + "px";
     });
   });
 
-  //3
-  const openPopupBtn = document.getElementById('openPopup');
-const closePopupBtn = document.getElementById('closePopup');
-const popupForm = document.getElementById('popupForm');
-const subscribeForm = document.getElementById('subscribeForm');
-openPopupBtn.onclick = function() {
-  popupForm.style.display = 'flex';
-};
+  const openPopupBtn = document.getElementById("openPopup");
+  const closePopupBtn = document.getElementById("closePopup");
+  const popupForm = document.getElementById("popupForm");
+  const subscribeForm = document.getElementById("subscribeForm");
 
-closePopupBtn.onclick = function() {
-  popupForm.style.display = 'none';
-};
+  if (openPopupBtn && popupForm) {
+    openPopupBtn.onclick = () => (popupForm.style.display = "flex");
+  }
 
-
-
-subscribeForm.addEventListener('submit', function(event) {
-  event.preventDefault();
-  alert('Thank you for subscribing!');
-  popupForm.style.display = 'none';
-  subscribeForm.reset();
-});
-
+  if (closePopupBtn && popupForm) {
+    closePopupBtn.onclick = () => (popupForm.style.display = "none");
+  }
 
   if (subscribeForm && popupForm) {
-    subscribeForm.addEventListener('submit', function(e) {
+    subscribeForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      popupForm.style.display = 'none';
-      alert('Thank you for subscribing!');
+      alert("Thank you for subscribing!");
+      popupForm.style.display = "none";
+      subscribeForm.reset();
     });
   }
-});
 
-//6-th Assignment
-
-document.addEventListener('DOMContentLoaded', () => {
-
-  //1
-  const blogCards = document.querySelectorAll('.blog-card');
-  blogCards.forEach(card => {
-    const stars = card.querySelectorAll('.star');
+  document.querySelectorAll(".blog-card").forEach((card) => {
+    const stars = card.querySelectorAll(".star");
     let currentRating = 0;
 
     stars.forEach((star, idx) => {
-      star.style.cursor = 'pointer';
-      star.addEventListener('click', () => {
+      star.style.cursor = "pointer";
+      star.addEventListener("click", () => {
         currentRating = idx + 1;
         stars.forEach((s, i) => {
-          s.style.color = i < currentRating ? '#8d6748' : '#ddd';
+          s.style.color = i < currentRating ? "#8d6748" : "#ddd";
         });
-        
-        const text = card.querySelector('.rating-text');
+
+        const text = card.querySelector(".rating-text");
         if (text) text.textContent = `Your rating: ${currentRating} / 5`;
-      
-        card.classList.add('highlight');
-        setTimeout(() => card.classList.remove('highlight'), 500);
+
+        card.classList.add("highlight");
+        setTimeout(() => card.classList.remove("highlight"), 500);
       });
     });
   });
 
-  //2
-  const readMoreButtons = document.querySelectorAll('.read-more-btn');
-  readMoreButtons.forEach(button => {
-    button.addEventListener('click', () => {
+  document.querySelectorAll(".read-more-btn").forEach((button) => {
+    button.addEventListener("click", () => {
       const extraContent = button.previousElementSibling;
-      const isVisible = extraContent.style.display === 'block';
-      extraContent.style.display = isVisible ? 'none' : 'block';
+      const isVisible = extraContent.style.display === "block";
+      extraContent.style.display = isVisible ? "none" : "block";
       button.textContent = isVisible ? "Read More" : "Show Less";
     });
   });
 
-  //3
-  const themeToggleBtn = document.getElementById('theme-toggle');
+  const themeToggleBtn = document.getElementById("theme-toggle");
   if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('night-theme');
+    themeToggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("night-theme");
+      const sound = new Audio("sound/click.mp3");
+      sound.play();
+    });
+  }
+
+  const allStars = document.querySelectorAll(".star");
+  if (allStars.length > 0) {
+    allStars.forEach((star) => {
+      star.addEventListener("click", () => {
+        const sound = new Audio("sound/click.mp3");
+        sound.play();
+      });
     });
   }
 });
 
-document.querySelectorAll('.star').forEach(star => {
-  star.addEventListener('click', () => {
-    const sound = new Audio("sound/click.mp3");
-    sound.play();
+//(Assignment 7)
+$(document).ready(function () {
+  //1
+  $("#searchInput").on("keyup", function () {
+    const query = $(this).val().toLowerCase();
+    $(".card-title").filter(function () {
+      $(this)
+        .closest(".card")
+        .toggle($(this).text().toLowerCase().includes(query));
+    });
   });
-});
 
-document.getElementById('theme-toggle').addEventListener('click', () => {
-  const sound = new Audio("sound/click.mp3");
-  sound.play();
+  //2
+  const suggestions = [
+    "Espresso Perfection",
+    "Fresh Pastries",
+    "Our Community",
+    "Our Journey with Coffee",
+    "Seasonal Specials",
+    "Barista Spotlight",
+  ];
+  $("#searchInput").on("input", function () {
+    const query = $(this).val().toLowerCase();
+    const filtered = suggestions.filter((item) =>
+      item.toLowerCase().startsWith(query)
+    );
+    let html = "";
+    if (query && filtered.length > 0) {
+      filtered.forEach(
+        (item) => (html += `<div class='suggestion-item p-2 border-bottom'>${item}</div>`)
+      );
+      $("#suggestions").html(html).show();
+    } else {
+      $("#suggestions").hide();
+    }
+  });
+  $(document).on("click", ".suggestion-item", function () {
+    $("#searchInput").val($(this).text());
+    $("#suggestions").hide();
+  });
+
+  //3
+  $("#highlightBtn").click(function () {
+    const keyword = $("#searchInput").val().trim();
+    if (!keyword) return;
+    const regex = new RegExp(`(${keyword})`, "gi");
+    $(".card-text, .accordion-content").each(function () {
+      const text = $(this).text();
+      const highlighted = text.replace(
+        regex,
+        `<span class='highlight'>$1</span>`
+      );
+      $(this).html(highlighted);
+    });
+  });
+
+  //6
+  $("#contactForm").on("submit", function (e) {
+    e.preventDefault();
+    const $btn = $(this).find("button[type=submit]");
+    $btn.prop("disabled", true).html(
+      '<span class="spinner-border spinner-border-sm"></span> Please wait...'
+    );
+    setTimeout(() => {
+      $btn.prop("disabled", false).text("Send Message");
+      alert("Message sent successfully!");
+      $(this).trigger("reset");
+    }, 2000);
+  });
+
+  //7
+  function showNotification(message) {
+    const $notif = $('<div class="toast-notification"></div>')
+      .text(message)
+      .appendTo("body");
+    $notif.fadeIn().delay(3000).fadeOut(() => $notif.remove());
+  }
+  $("#notifyBtn").click(() =>
+    showNotification("Welcome back to Asphalt‑8 Cafe Blog!")
+  );
+
+  //9
+  function lazyLoadImages() {
+    $("img[data-src]").each(function () {
+      if (
+        $(this).offset().top <
+        $(window).scrollTop() + $(window).height() + 100
+      ) {
+        $(this).attr("src", $(this).data("src")).removeAttr("data-src");
+      }
+    });
+  }
+  lazyLoadImages();
+  $(window).on("scroll", lazyLoadImages);
 });
