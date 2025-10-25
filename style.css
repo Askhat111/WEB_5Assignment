@@ -191,6 +191,21 @@ footer span, footer small {
   z-index: 2000;
 }
 
+#suggestions {
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0,0,0,.09);
+}
+.suggestion-item {
+  color: #3d2a17; 
+  font-size: 1.1rem;
+  cursor: pointer;
+  background: #fff;
+}
+.suggestion-item:hover {
+  background: #f5ece1;
+}
+
+
 @media (max-width: 900px) {
     footer {
         font-size: 1rem;
