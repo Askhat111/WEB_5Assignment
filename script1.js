@@ -123,33 +123,52 @@ $(document).ready(function () {
   });
 
   //2
-  const suggestions = [
-    "Espresso Perfection",
-    "Fresh Pastries",
-    "Our Community",
-    "Our Journey with Coffee",
-    "Seasonal Specials",
-    "Barista Spotlight",
-  ];
-  $("#searchInput").on("input", function () {
-    const query = $(this).val().toLowerCase();
-    const filtered = suggestions.filter((item) =>
-      item.toLowerCase().startsWith(query)
-    );
-    let html = "";
-    if (query && filtered.length > 0) {
-      filtered.forEach(
-        (item) => (html += `<div class='suggestion-item p-2 border-bottom'>${item}</div>`)
-      );
-      $("#suggestions").html(html).show();
-    } else {
-      $("#suggestions").hide();
-    }
+$("#searchInput").on("input", function () {
+  const query = $(this).val().toLowerCase();
+  $(".card-title").each(function () {
+    const card = $(this).closest(".col-lg-4, .col-md-6, .card");
+    const title = $(this).text().toLowerCase();
+
+    card.toggle(title.includes(query));
   });
-  $(document).on("click", ".suggestion-item", function () {
-    $("#searchInput").val($(this).text());
+});
+
+const suggestions = [
+  "Espresso Perfection",
+  "Fresh Pastries",
+  "Our Community",
+  "Our Journey with Coffee",
+  "Seasonal Specials",
+  "Barista Spotlight"
+];
+
+$("#searchInput").on("focus input", function () {
+  const query = $(this).val().toLowerCase();
+  const filtered = query
+    ? suggestions.filter(title => title.toLowerCase().includes(query))
+    : suggestions;
+  let html = "";
+  filtered.forEach(
+    title => html += `<div class='suggestion-item p-2 border-bottom'>${title}</div>`
+  );
+  if (filtered.length > 0) {
+    $("#suggestions").html(html).show();
+  } else {
     $("#suggestions").hide();
-  });
+  }
+});
+
+$(document).on("mousedown", ".suggestion-item", function () {
+  $("#searchInput").val($(this).text());
+  $("#suggestions").hide();
+  $("#searchInput").trigger("input");
+});
+
+$(document).on("mousedown", function (e) {
+  if (!$(e.target).is("#searchInput, .suggestion-item")) {
+    $("#suggestions").hide();
+  }
+});
 
   //3
   $("#highlightBtn").click(function () {
