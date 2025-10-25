@@ -175,6 +175,20 @@ footer span, footer small {
 
 .highlight {
   animation: highlightAnim 0.5s ease;
+  background-color: rgba(3, 24, 26, 0.516);
+  font-weight: bold;
+}
+
+.toast-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  display: none;
+  z-index: 2000;
 }
 
 @media (max-width: 900px) {
