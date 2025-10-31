@@ -1,6 +1,5 @@
 
 
-// Копирование текста по кнопке
 $(".copy-btn").on("click", function() {
   var text = $(this).siblings(".code-text").text();
   var $tooltip = $(this).siblings(".copied-tooltip");
