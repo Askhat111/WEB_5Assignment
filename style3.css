@@ -5,6 +5,17 @@ body {
   margin: 0;
   padding: 0;
 }
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 5px;
+  background: linear-gradient(90deg, #4306f9, #deb887, #7b4a08);
+  z-index: 9999;
+  transition: width 0.2s;
+}
+
 .welcome-section,
 .about-section {
     text-align: center;
@@ -65,7 +76,6 @@ body {
   color: #ffcc80;
   background: #5a3a22;
 }
-
 .card-row {
   display: flex;
   gap: 38px;
