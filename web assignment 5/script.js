@@ -1,68 +1,69 @@
-document.querySelectorAll(".accordion-header").forEach((button) => {
-  button.addEventListener("click", () => {
-    const content = button.nextElementSibling;
-    content.classList.toggle("show");
+document.addEventListener("DOMContentLoaded", () => {
+  const accordionHeaders = document.querySelectorAll(".accordion-header");
+  accordionHeaders.forEach(header => {
+    header.addEventListener("click", () => {
+      const content = header.nextElementSibling;
+      content.classList.toggle("show");
+    });
   });
-});
 
-function getGreeting() {
-  const hour = new Date().getHours();
-  let greeting;
-  switch (true) {
-    case hour < 12:
-      greeting = "Good Morning!";
-      break;
-    case hour < 18:
-      greeting = "Good Afternoon!";
-      break;
-    default:
-      greeting = "Good Evening!";
+  const languageSelect = document.getElementById("languageSelect");
+  if (languageSelect) {
+    languageSelect.addEventListener("change", () => {
+      const lang = languageSelect.value;
+      switch (lang) {
+        case "en":
+          document.body.innerHTML = document.body.innerHTML.replace(/Кафе|Галерея|Услуги/g, match => {
+            if (match === "Кафе") return "Café";
+            if (match === "Галерея") return "Gallery";
+            if (match === "Услуги") return "Services";
+          });
+          break;
+        case "ru":
+          document.body.innerHTML = document.body.innerHTML.replace(/Café|Gallery|Services/g, match => {
+            if (match === "Café") return "Кафе";
+            if (match === "Gallery") return "Галерея";
+            if (match === "Services") return "Услуги";
+          });
+          break;
+      }
+    });
   }
-  document.getElementById("greeting").textContent =
-    greeting + " Welcome to Café Asphalt-8!";
-}
-getGreeting();
 
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const message = document.getElementById("formMessage");
-  message.textContent = "Sending...";
+  const counters = document.querySelectorAll(".counter");
+  const speed = 200; 
+  counters.forEach(counter => {
+    const animate = () => {
+      const value = +counter.getAttribute("data-target");
+      const current = +counter.innerText;
+      const increment = value / speed;
+      if (current < value) {
+        counter.innerText = Math.ceil(current + increment);
+        requestAnimationFrame(animate);
+      } else {
+        counter.innerText = value + "+";
+      }
+    };
+    animate();
+  });
 
-  setTimeout(() => {
-    showMessage("Thank you! Your message was sent successfully.");
-  }, 1000);
-});
-
-function showMessage(msg) {
-  document.getElementById("formMessage").textContent = msg;
-}
-
-const translations = {
-  en: {
-    greeting: "Welcome to Café Asphalt-8",
-    intro: "Your perfect stop for rich coffee, tasty pastries, and a cozy vibe.",
-    service: "Our Specialties",
-    espresso: "Strong and aromatic coffee for real enthusiasts.",
-    croissant: "Freshly baked, buttery and soft pastries every morning.",
-    desserts: "Sweet treats that pair perfectly with our signature drinks."
-  },
-  ru: {
-    greeting: "Добро пожаловать в Café Asphalt-8",
-    intro: "Ваше идеальное место для ароматного кофе и вкусной выпечки.",
-    service: "Наши Специалитеты",
-    espresso: "Крепкий и ароматный кофе для настоящих ценителей.",
-    croissant: "Свежие, мягкие и сливочные круассаны каждое утро.",
-    desserts: "Сладости, идеально сочетающиеся с нашими напитками."
+  const searchInput = document.getElementById("searchInput");
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      const keyword = searchInput.value.trim();
+      const faqItems = document.querySelectorAll(".accordion-content");
+      
+      faqItems.forEach(item => {
+        const text = item.textContent;
+        if (keyword.length > 0) {
+          const regex = new RegExp(`(${keyword})`, "gi");
+          item.innerHTML = text.replace(regex, '<span class="highlight">$1</span>');
+        } else {
+          item.innerHTML = text;
+        }
+      });
+    });
   }
-};
-
-document.getElementById("language-select").addEventListener("change", function () {
-  const lang = this.value;
-  const t = translations[lang];
-  document.getElementById("greeting").textContent = t.greeting;
-  document.getElementById("intro-text").textContent = t.intro;
-  document.getElementById("service-title").textContent = t.service;
-  document.getElementById("espresso-desc").textContent = t.espresso;
-  document.getElementById("croissant-desc").textContent = t.croissant;
-  document.getElementById("desserts-desc").textContent = t.desserts;
 });
+
+
