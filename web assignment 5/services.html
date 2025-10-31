@@ -13,7 +13,7 @@
       <a href="index.html">Services</a>
       <a href="gallery.html">Gallery</a>
       <a href="#faq">FAQ</a>
-      <select id="language-select">
+      <select id="languageSelect">
         <option value="en">EN</option>
         <option value="ru">RU</option>
       </select>
@@ -24,6 +24,24 @@
     <section class="intro">
       <h1 id="greeting">Welcome to Café Asphalt-8</h1>
       <p id="intro-text">Your perfect stop for rich coffee, tasty pastries, and a cozy vibe.</p>
+    </section>
+
+    <section id="stats" class="stats">
+      <h2>Our Achievements</h2>
+      <div class="stats-row">
+        <div class="stat">
+          <h3 class="counter" data-target="1500">0</h3>
+          <p>Happy Customers</p>
+        </div>
+        <div class="stat">
+          <h3 class="counter" data-target="320">0</h3>
+          <p>Coffee Cups Daily</p>
+        </div>
+        <div class="stat">
+          <h3 class="counter" data-target="25">0</h3>
+          <p>Delicious Dishes</p>
+        </div>
+      </div>
     </section>
 
     <section id="services" class="services">
@@ -52,6 +70,12 @@
 
     <section id="faq" class="faq">
       <h2>Frequently Asked Questions</h2>
+
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search FAQ..." />
+        <button id="searchBtn">Search</button>
+      </div>
+
       <div class="accordion">
         <div class="accordion-item">
           <button class="accordion-header">Where are you located?</button>
