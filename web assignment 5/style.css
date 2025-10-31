@@ -297,4 +297,43 @@ footer {
   body {
     background-color: #fff3e0; 
   }
+
+}
+
+.stats {
+  background: #fff3e0;
+  text-align: center;
+  padding: 60px 20px;
+}
+.stats h2 {
+  margin-bottom: 30px;
+}
+.stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+.stat {
+  text-align: center;
+}
+.counter {
+  font-size: 2.5em;
+  color: #6f4e37;
+  font-weight: bold;
+  display: block;
+}
+
+#searchInput {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  width: 70%;
+  max-width: 400px;
+  border: 2px solid #6f4e37;
+  border-radius: 6px;
+}
+mark {
+  background-color: yellow;
+  color: black;
 }
