@@ -6,15 +6,15 @@ body {
   margin: 0;
 }
 
-.navbar,
-footer {
+.navbar
+ {
   background-color: #6e4b33 !important;
   color: #fff;
 }
 
 .navbar .navbar-brand,
-.navbar .nav-link,
-footer {
+.navbar .nav-link
+{
   color: #fff !important;
 }
 
@@ -109,26 +109,48 @@ aside,
   transition: box-shadow 0.3s, background 0.3s, color 0.15s;
 }
 
-.footer {
-  background-color: #3e2723 !important;
-  color: #fef6e4;
-  width: 100%;
-  font-size: 1.1rem;
+footer {
+  background: #3b2414 !important; 
+  color: #fff !important;     
 }
-footer span, footer small {
-  color: inherit;
+
+footer, footer * {
+  color: #fff !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+.night-theme footer {
+  background: #191512 !important; 
+  color: #fff !important;
+}
+
+footer a {
+  color: #ffe7b3 !important;
 }
 
 .night-theme {
-  background-color: #2e2e2e;
-  color: #ddd;
+  background: #23201d !important;
+  color: #f7f3f0 !important;
 }
-.night-theme .card,
-.night-theme .navbar,
-.night-theme footer {
-  background-color: #3a3a3a;
-  color: #eee;
+.night-theme .card, .night-theme .bg-light, .night-theme .form-control, .night-theme .contact-form-section {
+  background: #322e2a !important;
+  color: #f7f3f0 !important;
+  border-color: #534330 !important;
 }
+.night-theme .navbar, .night-theme footer {
+  background: #191512 !important;
+  color: #fff !important;
+}
+
+.night-theme label, .night-theme .form-label, .night-theme input, .night-theme select, .night-theme textarea, .night-theme .form-control, .night-theme .contact-form-section, night-theme input::placeholder,
+.night-theme textarea::placeholder {
+  color: #fff !important;
+  background: #23201d !important;
+  border-color: #887054 !important;
+  opacity: 1 !important;
+}
+
 .blog-card.highlight {
   animation: highlightAnim 0.5s ease;
 }
@@ -175,7 +197,7 @@ footer span, footer small {
 
 .highlight {
   animation: highlightAnim 0.5s ease;
-  background-color: rgba(3, 24, 26, 0.516);
+  background-color: rgba(209, 212, 118, 0.516);
   font-weight: bold;
 }
 
@@ -205,7 +227,6 @@ footer span, footer small {
   background: #f5ece1;
 }
 
-
 @media (max-width: 900px) {
     footer {
         font-size: 1rem;
@@ -224,4 +245,45 @@ h1, h2, h3, h4, h5, h6, p {
     h1, h2, h3, h4, h5, h6, p {
         font-size: 1.5rem;
     }
+}
+
+.night-theme input::placeholder,
+.night-theme textarea::placeholder {
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+.night-theme .blog-card,
+.night-theme .blog-card .card-body,
+.night-theme .blog-card p,
+.night-theme .blog-card .extra-content {
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+.night-theme .blog-card h5,
+.night-theme .blog-card h2,
+.night-theme .blog-card .card-title {
+  color: #ffe7b3 !important; 
+}
+
+.night-theme .blog-card {
+  background: #322e2a !important;
+}
+
+footer {
+  flex-shrink: 0;          
+}
+
+footer {
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  position: relative;
+  background: #3b2414 !important;  
+  color: #fff !important;
+  padding: 1.2rem 0;
+  text-align: center;
 }
