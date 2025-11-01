@@ -1,3 +1,30 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+  if (localStorage.getItem("theme") === "night") {
+    document.body.classList.add("night-theme");
+  } else {
+    document.body.classList.remove("night-theme");
+  }
+
+  const themeToggleBtn = document.getElementById("theme-toggle");
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener("click", () => {
+      const body = document.body;
+      if (body.classList.contains("night-theme")) {
+        body.classList.remove("night-theme");
+        localStorage.setItem("theme", "day");
+      } else {
+        body.classList.add("night-theme");
+        localStorage.setItem("theme", "night");
+      }
+
+      const sound = new Audio("sound/click.mp3");
+      sound.play();
+    });
+  }
+});
+
+
 document.addEventListener("DOMContentLoaded", function () {
  
   const myForm = document.querySelector("form");
@@ -98,16 +125,6 @@ document.addEventListener("DOMContentLoaded", function () {
       sound.play();
     });
   }
-
-  const allStars = document.querySelectorAll(".star");
-  if (allStars.length > 0) {
-    allStars.forEach((star) => {
-      star.addEventListener("click", () => {
-        const sound = new Audio("sound/click.mp3");
-        sound.play();
-      });
-    });
-  }
 });
 
 //(Assignment 7)
@@ -170,21 +187,6 @@ $(document).on("mousedown", function (e) {
   }
 });
 
-  //3
-  $("#highlightBtn").click(function () {
-    const keyword = $("#searchInput").val().trim();
-    if (!keyword) return;
-    const regex = new RegExp(`(${keyword})`, "gi");
-    $(".card-text, .accordion-content").each(function () {
-      const text = $(this).text();
-      const highlighted = text.replace(
-        regex,
-        `<span class='highlight'>$1</span>`
-      );
-      $(this).html(highlighted);
-    });
-  });
-
   //6
   $("#contactForm").on("submit", function (e) {
     e.preventDefault();
@@ -224,3 +226,4 @@ $(document).on("mousedown", function (e) {
   lazyLoadImages();
   $(window).on("scroll", lazyLoadImages);
 });
+
