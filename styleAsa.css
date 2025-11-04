@@ -1,13 +1,13 @@
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
-  background: #fdf6f0;
-  color: #3e2723;
+  background-color: #f3e9d2;
+  color: #3d2a17;
   line-height: 1.6;
 }
 
 header {
-  background-color: #6f4e37;
+  background-color: #6e4b33;
   color: #fff;
   padding: 15px 40px;
   display: flex;
@@ -28,14 +28,14 @@ nav {
 }
 
 nav a {
-  color: #ffe0b2;
+  color: #ffe7b3;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
 nav a:hover {
-  color: #ffcc80;
+  color: #fff3d9;
   text-decoration: underline;
 }
 
@@ -43,8 +43,8 @@ nav a:hover {
   padding: 5px 8px;
   border-radius: 6px;
   border: none;
-  background-color: #ffcc80;
-  color: #3e2723;
+  background-color: #8d6748;
+  color: #fff;
   font-weight: bold;
   cursor: pointer;
 }
@@ -52,26 +52,28 @@ nav a:hover {
 .intro {
   text-align: center;
   padding: 60px 20px;
-  background: linear-gradient(to bottom, #fff, #fdf6f0);
+  background: linear-gradient(to bottom, #fff, #f3e9d2);
 }
 .intro h1 {
   font-size: 2.2em;
   margin-bottom: 10px;
+  color: #6e4b33;
 }
 .intro p {
   font-size: 1.1em;
-  color: #5d4037;
+  color: #4e342e;
 }
 
 .services {
   text-align: center;
   padding: 50px 20px;
+  background-color: #fff;
 }
 
 .services h2 {
   font-size: 1.8em;
   margin-bottom: 30px;
-  color: #4e342e;
+  color: #6e4b33;
 }
 
 .card-row {
@@ -83,51 +85,54 @@ nav a:hover {
 
 .card {
   background: #fff;
-  border-radius: 10px;
+  border-radius: 16px;
   width: 280px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(166,124,82,0.13);
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 16px 40px rgba(124,94,47,0.18);
 }
 
 .card img {
   width: 100%;
   height: 180px;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .card h3 {
   margin: 10px 0;
+  color: #6e4b33;
 }
 
 .card p {
   padding: 0 10px;
-  color: #5d4037;
+  color: #3d2a17;
 }
 
 .card button {
   margin: 10px;
-  background-color: #6f4e37;
+  background-color: #8d6748;
   color: white;
   border: none;
   padding: 8px 14px;
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 .card button:hover {
-  background-color: #5d3c29;
+  background-color: #744e2e;
 }
 
 .faq {
   text-align: center;
   padding: 50px 20px;
+  background-color: #fff;
 }
 
 .accordion {
@@ -136,27 +141,27 @@ nav a:hover {
 }
 
 .accordion-header {
-  background: #6f4e37;
+  background: #6e4b33;
   color: white;
   border: none;
   width: 100%;
   text-align: left;
   padding: 15px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 8px;
   margin-top: 10px;
   font-size: 1em;
   transition: background 0.3s;
 }
 
 .accordion-header:hover {
-  background: #5d3c29;
+  background: #744e2e;
 }
 
 .accordion-content {
   background: #fff;
   padding: 15px;
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 8px 8px;
   display: none;
   animation: fadeIn 0.3s ease;
 }
@@ -179,12 +184,12 @@ nav a:hover {
 .contact {
   text-align: center;
   padding: 50px 20px;
-  background-color: #fffaf5;
+  background-color: #f3e9d2;
 }
 
 .contact h2 {
   font-size: 1.8em;
-  color: #4e342e;
+  color: #6e4b33;
 }
 
 .contact form {
@@ -199,22 +204,28 @@ nav a:hover {
 .contact textarea {
   padding: 10px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid #a67c52;
   font-size: 1em;
 }
 
+.contact input:focus,
+.contact textarea:focus {
+  border-color: #8d6748;
+  box-shadow: 0 0 0 0.2rem rgba(166,124,82,0.20);
+}
+
 .contact button {
-  background-color: #6f4e37;
+  background-color: #8d6748;
   color: white;
   border: none;
   padding: 10px;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
 }
 
 .contact button:hover {
-  background-color: #5d3c29;
+  background-color: #744e2e;
 }
 
 #formMessage {
@@ -226,11 +237,12 @@ nav a:hover {
 .gallery {
   text-align: center;
   padding: 40px 20px;
+  background-color: #fff;
 }
 
 .gallery h2 {
   font-size: 1.8em;
-  color: #4e342e;
+  color: #6e4b33;
 }
 
 .gallery-grid {
@@ -242,7 +254,7 @@ nav a:hover {
 
 .gallery-grid img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 14px;
   transition: transform 0.3s, opacity 0.3s;
 }
 
@@ -253,11 +265,51 @@ nav a:hover {
 
 footer {
   text-align: center;
-  background-color: #3e2723;
+  background-color: #3b2414;
   color: white;
   padding: 20px;
   margin-top: 50px;
   font-size: 0.95em;
+}
+
+.stats {
+  background: #fff3e0;
+  text-align: center;
+  padding: 60px 20px;
+}
+.stats h2 {
+  margin-bottom: 30px;
+  color: #6e4b33;
+}
+.stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+.stat {
+  text-align: center;
+}
+.counter {
+  font-size: 2.5em;
+  color: #8d6748;
+  font-weight: bold;
+  display: block;
+}
+
+#searchInput {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  width: 70%;
+  max-width: 400px;
+  border: 2px solid #8d6748;
+  border-radius: 8px;
+}
+mark {
+  background-color: rgba(209, 212, 118, 0.516);
+  color: #3d2a17;
+  font-weight: bold;
 }
 
 @media (max-width: 768px) {
@@ -280,7 +332,7 @@ footer {
   }
 
   body {
-    background-color: #fff7ed; 
+    background-color: #f7f0dc;
   }
 }
 
@@ -295,45 +347,6 @@ footer {
   }
 
   body {
-    background-color: #fff3e0; 
+    background-color: #f5e9c6;
   }
-
-}
-
-.stats {
-  background: #fff3e0;
-  text-align: center;
-  padding: 60px 20px;
-}
-.stats h2 {
-  margin-bottom: 30px;
-}
-.stats-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 50px;
-}
-.stat {
-  text-align: center;
-}
-.counter {
-  font-size: 2.5em;
-  color: #6f4e37;
-  font-weight: bold;
-  display: block;
-}
-
-#searchInput {
-  display: block;
-  margin: 20px auto;
-  padding: 10px;
-  width: 70%;
-  max-width: 400px;
-  border: 2px solid #6f4e37;
-  border-radius: 6px;
-}
-mark {
-  background-color: yellow;
-  color: black;
 }
