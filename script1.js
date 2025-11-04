@@ -1,5 +1,5 @@
-//day/hight
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
+ 
   if (localStorage.getItem("theme") === "night") {
     document.body.classList.add("night-theme");
   } else {
@@ -9,22 +9,17 @@ document.addEventListener('DOMContentLoaded', function() {
   const themeToggleBtn = document.getElementById("theme-toggle");
   if (themeToggleBtn) {
     themeToggleBtn.addEventListener("click", () => {
-      const body = document.body;
-      if (body.classList.contains("night-theme")) {
-        body.classList.remove("night-theme");
-        localStorage.setItem("theme", "day");
-      } else {
-        body.classList.add("night-theme");
-        localStorage.setItem("theme", "night");
+      const isNight = document.body.classList.toggle("night-theme");
+      localStorage.setItem("theme", isNight ? "night" : "day");
+      try {
+        const sound = new Audio("sound/click.mp3");
+        sound.play();
+      } catch (e) {
+ 
       }
-      const sound = new Audio("sound/click.mp3");
-      sound.play();
     });
   }
 
-
-document.addEventListener("DOMContentLoaded", function () {
- 
   const myForm = document.querySelector("form");
   if (myForm) {
     myForm.addEventListener("submit", function (e) {
@@ -106,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  
   document.querySelectorAll(".read-more-btn").forEach((button) => {
     button.addEventListener("click", () => {
       const extraContent = button.previousElementSibling;
@@ -114,78 +110,50 @@ document.addEventListener("DOMContentLoaded", function () {
       button.textContent = isVisible ? "Read More" : "Show Less";
     });
   });
-
-  const themeToggleBtn = document.getElementById("theme-toggle");
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener("click", () => {
-      document.body.classList.toggle("night-theme");
-      const sound = new Audio("sound/click.mp3");
-      sound.play();
-    });
-  }
 });
 
-//(Assignment 7)
+//JQuery
 $(document).ready(function () {
-  //1
-  $("#searchInput").on("keyup", function () {
+  
+  const suggestions = [
+    "Espresso Perfection",
+    "Fresh Pastries",
+    "Our Community",
+    "Our Journey with Coffee",
+    "Seasonal Specials",
+    "Barista Spotlight"
+  ];
+
+  $("#searchInput").on("keyup input focus", function () {
     const query = $(this).val().toLowerCase();
+    let filtered = query ? suggestions.filter(title => title.toLowerCase().includes(query)) : suggestions;
+    let html = "";
+    filtered.forEach(title => {
+      html += `<div class='suggestion-item p-2 border-bottom'>${title}</div>`;
+    });
+    if (filtered.length > 0) {
+      $("#suggestions").html(html).show();
+    } else {
+      $("#suggestions").hide();
+    }
+
     $(".card-title").filter(function () {
-      $(this)
-        .closest(".card")
-        .toggle($(this).text().toLowerCase().includes(query));
+      $(this).closest(".card").toggle($(this).text().toLowerCase().includes(query));
     });
   });
 
-  //2
-$("#searchInput").on("input", function () {
-  const query = $(this).val().toLowerCase();
-  $(".card-title").each(function () {
-    const card = $(this).closest(".col-lg-4, .col-md-6, .card");
-    const title = $(this).text().toLowerCase();
-
-    card.toggle(title.includes(query));
+  $(document).on("mousedown", ".suggestion-item", function () {
+    $("#searchInput").val($(this).text());
+    $("#suggestions").hide();
+    $("#searchInput").trigger("input");
   });
-});
 
-const suggestions = [
-  "Espresso Perfection",
-  "Fresh Pastries",
-  "Our Community",
-  "Our Journey with Coffee",
-  "Seasonal Specials",
-  "Barista Spotlight"
-];
+  $(document).on("mousedown", function (e) {
+    if (!$(e.target).is("#searchInput, .suggestion-item")) {
+      $("#suggestions").hide();
+    }
+  });
 
-$("#searchInput").on("focus input", function () {
-  const query = $(this).val().toLowerCase();
-  const filtered = query
-    ? suggestions.filter(title => title.toLowerCase().includes(query))
-    : suggestions;
-  let html = "";
-  filtered.forEach(
-    title => html += `<div class='suggestion-item p-2 border-bottom'>${title}</div>`
-  );
-  if (filtered.length > 0) {
-    $("#suggestions").html(html).show();
-  } else {
-    $("#suggestions").hide();
-  }
-});
-
-$(document).on("mousedown", ".suggestion-item", function () {
-  $("#searchInput").val($(this).text());
-  $("#suggestions").hide();
-  $("#searchInput").trigger("input");
-});
-
-$(document).on("mousedown", function (e) {
-  if (!$(e.target).is("#searchInput, .suggestion-item")) {
-    $("#suggestions").hide();
-  }
-});
-
-  //6
   $("#contactForm").on("submit", function (e) {
     e.preventDefault();
     const $btn = $(this).find("button[type=submit]");
@@ -199,7 +167,6 @@ $(document).on("mousedown", function (e) {
     }, 2000);
   });
 
-  //7
   function showNotification(message) {
     const $notif = $('<div class="toast-notification"></div>')
       .text(message)
@@ -210,7 +177,6 @@ $(document).on("mousedown", function (e) {
     showNotification("Welcome back to Asphalt‑8 Cafe Blog!")
   );
 
-  //9
   function lazyLoadImages() {
     $("img[data-src]").each(function () {
       if (
@@ -224,4 +190,3 @@ $(document).on("mousedown", function (e) {
   lazyLoadImages();
   $(window).on("scroll", lazyLoadImages);
 });
-
