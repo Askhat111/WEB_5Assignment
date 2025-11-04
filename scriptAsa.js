@@ -33,27 +33,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const form = document.getElementById("contactForm");
-  const formMessage = document.getElementById("formMessage");
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
+const form = document.querySelector(".contact form");
+const formMessage = document.getElementById("formMessage");
 
-      fetch("https://jsonplaceholder.typicode.com/posts", {
-        method: "POST",
-        body: formData
-      })
-        .then(res => res.json())
-        .then(() => {
-          formMessage.textContent = "Message sent successfully!";
-          form.reset();
-        })
-        .catch(() => {
-          formMessage.textContent = "Error sending message. Try again later.";
-        });
-    });
-  }
+if (form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    formMessage.innerHTML = `
+      <div id="progressContainer" style="
+        width: 100%; 
+        background: #ddd; 
+        border-radius: 6px; 
+        overflow: hidden;
+        margin-top: 10px;">
+        <div id="progressBar" style="
+          width: 0%;
+          height: 16px;
+          background: #8d6748;
+          transition: width 2s;"></div>
+      </div>
+      <p style="color: #6e4b33; font-weight: bold;">Your message is sending...</p>
+    `;
+
+    const progressBar = document.getElementById("progressBar");
+
+    setTimeout(() => { progressBar.style.width = "100%"; }, 100);
+
+    setTimeout(() => {
+      formMessage.innerHTML = "<p style='color: green; font-weight: bold;'>Message sent successfully!</p>";
+      form.reset();
+    }, 2500);
+  });
+}
+
 
   const counters = document.querySelectorAll(".counter");
   const speed = 100; 
