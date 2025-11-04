@@ -350,3 +350,68 @@ mark {
     background-color: #f5e9c6;
   }
 }
+
+.theme-btn {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #fff;
+  margin-left: 10px;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.theme-btn:hover {
+  transform: scale(1.15);
+  color: #ffcc80;
+}
+
+body.dark-mode {
+  background-color: #1f1a17;
+  color: #f5f5f5;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body.dark-mode header {
+  background-color: #2c1d13;
+}
+
+body.dark-mode footer {
+  background-color: #1a0f0a;
+  color: #f0e6d2;
+}
+
+body.dark-mode .intro {
+  background: linear-gradient(to bottom, #2c1d13, #1f1a17);
+}
+
+body.dark-mode .services {
+  background-color: #241a15;
+}
+
+body.dark-mode .faq {
+  background-color: #241a15;
+}
+
+body.dark-mode .contact {
+  background-color: #1e1815;
+}
+
+body.dark-mode .stats {
+  background-color: #2a201a;
+}
+
+body.dark-mode .gallery {
+  background-color: #201712;
+}
+
+body.dark-mode #searchInput {
+  background-color: #2a201a;
+  color: #f5f5f5;
+  border-color: #ffcc80;
+}
+
+body.dark-mode mark {
+  background-color: #ffe082;
+  color: #000;
+}
