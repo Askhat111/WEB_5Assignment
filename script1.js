@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
-
+//day/hight
+document.addEventListener('DOMContentLoaded', function() {
   if (localStorage.getItem("theme") === "night") {
     document.body.classList.add("night-theme");
   } else {
@@ -17,12 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
         body.classList.add("night-theme");
         localStorage.setItem("theme", "night");
       }
-
       const sound = new Audio("sound/click.mp3");
       sound.play();
     });
   }
-});
 
 
 document.addEventListener("DOMContentLoaded", function () {
