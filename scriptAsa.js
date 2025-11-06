@@ -105,20 +105,29 @@ if (form) {
   }
 });
 
-const themeToggle = document.getElementById("theme-toggle");
-const body = document.body;
+document.addEventListener("DOMContentLoaded", function () {
+  if (localStorage.getItem("theme") === "night") {
+    document.body.classList.add("night-theme");
+  }
 
-const savedTheme = localStorage.getItem("theme");
-if (savedTheme === "dark") {
-  body.classList.add("dark-mode");
-  themeToggle.textContent = "☀️";
-} else {
-  themeToggle.textContent = "🌙";
-}
+  const themeToggle = document.getElementById("theme-toggle");
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const isNight = document.body.classList.toggle("night-theme");
+      localStorage.setItem("theme", isNight ? "night" : "day");
 
-themeToggle.addEventListener("click", () => {
-  body.classList.toggle("dark-mode");
-  const isDark = body.classList.contains("dark-mode");
-  themeToggle.textContent = isDark ? "☀️" : "🌙";
-  localStorage.setItem("theme", isDark ? "dark" : "light");
+      themeToggle.textContent = isNight ? "Toggle day/night" : "Toggle day/night";
+
+      try {
+        const sound = new Audio("sound/click.mp3");
+        sound.play();
+      } catch (e) {
+        console.warn("Sound not found");
+      }
+    });
+
+    themeToggle.textContent = document.body.classList.contains("night-theme")
+      ? "Toggle day/night"
+      : "Toggle day/night";
+  }
 });
