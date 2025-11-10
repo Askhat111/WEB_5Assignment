@@ -7,115 +7,105 @@
   <link rel="stylesheet" href="styleAsa.css" />
 </head>
 <body>
-  <header>
-    <div class="logo-container">
+<header>
+  <div class="logo-container">
     <img src="logo.png" alt="Site Logo" class="logo-img">
-    <span class="logo-text">My Website</span>
+    <span class="logo-text">Menu</span>
   </div>
-    <nav>
-      <a class="nav-link" href="index.html">Main</a></li>
-      <a class="nav-link" href="about.html">About us</a></li>
-      <a class="nav-link" href="services.html">Services</a></li>
-      <a class="nav-link" href="gallery.html">Gallery</a></li>
-      <a class="nav-link" href="blog.html">Blog</a></li>
-      <a class="nav-link" href="contact.html">Contact</a></li>
-      <a href="#faq">FAQ</a>
-      <select id="languageSelect">
-        <option value="en">EN</option>
-        <option value="ru">RU</option>
-      </select>
-    </nav>
-          <button id="theme-toggle">Toggle day/night</button>
-  </header>
 
-  <main>
-    <section class="intro">
-      <h1 id="greeting">Welcome to Café Asphalt-8</h1>
-      <p id="intro-text">Your perfect stop for rich coffee, tasty pastries, and a cozy vibe.</p>
-    </section>
+  <nav class="navbar">
+    <a class="nav-link" href="index.html">Main</a>
+    <a class="nav-link" href="about.html">About us</a>
+    <a class="nav-link active" href="services.html">Menu</a>
+    <a class="nav-link" href="gallery.html">Gallery</a>
+    <a class="nav-link" href="blog.html">Blog</a>
+    <a class="nav-link" href="contact.html">Contact</a>
+    <a class="nav-link" href="#faq">FAQ</a>
 
-    <section id="stats" class="stats">
-      <h2>Our Achievements</h2>
-      <div class="stats-row">
-        <div class="stat">
-          <h3 class="counter" data-target="1500">0</h3>
-          <p>Happy Customers</p>
-        </div>
-        <div class="stat">
-          <h3 class="counter" data-target="320">0</h3>
-          <p>Coffee Cups Daily</p>
-        </div>
-        <div class="stat">
-          <h3 class="counter" data-target="25">0</h3>
-          <p>Delicious Dishes</p>
-        </div>
+    <select id="languageSelect">
+      <option value="en">EN</option>
+      <option value="ru">RU</option>
+    </select>
+    <button id="theme-toggle" class="theme-btn">🌙</button>
+  </nav>
+</header>
+
+<main>
+  <section class="intro">
+  <h1 id="greeting"><span id="typing-text">Welcome to Café Asphalt-8</span></h1>
+  <p id="intro-text">Your perfect stop for rich coffee, tasty pastries, and a cozy vibe.</p>
+</section>
+
+  </section>
+
+  <section id="stats" class="stats">
+    <h2>Our Achievements</h2>
+    <div class="stats-row">
+      <div class="stat">
+        <h3 class="counter" data-target="1500">0</h3>
+        <p>Happy Customers</p>
       </div>
-    </section>
-
-    <section id="services" class="services">
-      <h2 id="service-title">Our Specialties</h2>
-      <div class="card-row">
-        <div class="card">
-          <img src="espresso.jpg" alt="Espresso" />
-          <h3>Espresso</h3>
-          <p id="espresso-desc">Strong and aromatic coffee for real enthusiasts.</p>
-        </div>
-        <div class="card">
-          <img src="croissant.jpg" alt="Croissant" />
-          <h3>Croissants</h3>
-          <p id="croissant-desc">Freshly baked, buttery and soft pastries every morning.</p>
-        </div>
-        <div class="card">
-          <img src="desserts.jpg" alt="Desserts" />
-          <h3>Desserts</h3>
-          <p id="desserts-desc">Sweet treats that pair perfectly with our signature drinks.</p>
-        </div>
+      <div class="stat">
+        <h3 class="counter" data-target="320">0</h3>
+        <p>Coffee Cups Daily</p>
       </div>
-    </section>
-
-    <section id="faq" class="faq">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search FAQ..." />
-        <button id="searchBtn">Search</button>
+      <div class="stat">
+        <h3 class="counter" data-target="25">0</h3>
+        <p>Delicious Dishes</p>
       </div>
+    </div>
+  </section>
 
-      <div class="accordion">
-        <div class="accordion-item">
-          <button class="accordion-header">Where are you located?</button>
-          <div class="accordion-content">We’re located downtown, near the central park — open every day from 8AM to 10PM.</div>
-        </div>
-        <div class="accordion-item">
-          <button class="accordion-header">Do you have dairy-free options?</button>
-          <div class="accordion-content">Yes! We offer almond, soy, and oat milk for all drinks.</div>
-        </div>
-        <div class="accordion-item">
-          <button class="accordion-header">Can I host an event at Café Asphalt-8?</button>
-          <div class="accordion-content">Absolutely — we provide space reservations for private or group events.</div>
-        </div>
+  <section id="services" class="services">
+    <h2 id="service-title">Our Specialties</h2>
+    <div class="card-row">
+      <div class="card" data-keywords="espresso coffee strong aromatic">
+        <img src="espresso.jpg" alt="Espresso" />
+        <h3>Espresso</h3>
+        <p id="espresso-desc">Strong and aromatic coffee for real enthusiasts.</p>
       </div>
-    </section>
+      <div class="card" data-keywords="croissant pastry buttery soft fresh baked">
+        <img src="croissant.jpg" alt="Croissant" />
+        <h3>Croissants</h3>
+        <p id="croissant-desc">Freshly baked, buttery and soft pastries every morning.</p>
+      </div>
+      <div class="card" data-keywords="desserts sweet treats drinks">
+        <img src="desserts.jpg" alt="Desserts" />
+        <h3>Desserts</h3>
+        <p id="desserts-desc">Sweet treats that pair perfectly with our signature drinks.</p>
+      </div>
+    </div>
+  </section>
 
-    <section class="contact">
-      <h2>Contact Us</h2>
-      <form id="contactForm">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send</button>
-      </form>
-      <p id="formMessage"></p>
-    </section>
-  </main>
+  <section id="faq" class="faq">
+    <h2>Frequently Asked Questions</h2>
 
-  </body>a
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search FAQ..." />
+      <button id="searchBtn">Search</button>
+    </div>
 
-  <footer>
-    <p>© 2025 | Café Asphalt-8 | Team: “Makan” — Assanali, Askhat, Asylkhan</p>
-  </footer>
+    <div class="accordion" id="faqAccordion">
+      <div class="accordion-item" data-keywords="location downtown park open hours">
+        <button class="accordion-header">Where are you located?</button>
+        <div class="accordion-content">We’re located downtown, near the central park — open every day from 8AM to 10PM.</div>
+      </div>
+      <div class="accordion-item" data-keywords="dairy milk almond soy oat vegan">
+        <button class="accordion-header">Do you have dairy-free options?</button>
+        <div class="accordion-content">Yes! We offer almond, soy, and oat milk for all drinks.</div>
+      </div>
+      <div class="accordion-item" data-keywords="event space reservation private group">
+        <button class="accordion-header">Can I host an event at Café Asphalt-8?</button>
+        <div class="accordion-content">Absolutely — we provide space reservations for private or group events.</div>
+      </div>
+    </div>
+  </section>
+</main>
 
-  <script src="scriptAsa.js"></script>
+<footer>
+  <p>© 2025 | Café Asphalt-8 | Team: “Makan” — Assanali, Askhat, Asylkhan</p>
+</footer>
+
+<script src="scriptAsa.js"></script>
 </body>
 </html>
-

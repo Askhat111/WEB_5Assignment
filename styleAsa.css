@@ -1,6 +1,9 @@
+body, button, input, select, textarea, h1, h2, h3, h4, h5, h6, p, a, span, div {
+  font-family: "Times New Roman", Times, serif !important;
+}
+
 body {
   margin: 0;
-  font-family: "Segoe UI", sans-serif;
   background-color: #f3e9d2;
   color: #3d2a17;
   line-height: 1.6;
@@ -21,33 +24,66 @@ header .logo {
   font-weight: bold;
 }
 
-nav {
+.navbar {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
+  background-color: #6e4b33;
+  padding: 10px 20px;
+  border-radius: 10px;
 }
 
-nav a {
-  color: #ffe7b3;
+.navbar .nav-link {
+  color: #fff;
   text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 7px;
+  transition: background 0.3s, transform 0.2s;
   font-weight: bold;
-  transition: color 0.3s ease;
 }
 
-nav a:hover {
-  color: #fff3d9;
-  text-decoration: underline;
+.navbar .nav-link:hover,
+.navbar .nav-link:focus,
+.navbar .nav-link.active {
+  background-color: #8d6748;
+  color: #fff;
+}
+.night-theme .navbar {
+  background-color:#191512;
 }
 
-#language-select {
-  padding: 5px 8px;
-  border-radius: 6px;
+#languageSelect {
+  padding: 5px 10px;
+  border-radius: 7px;
   border: none;
   background-color: #8d6748;
   color: #fff;
   font-weight: bold;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
+
+#languageSelect:hover {
+  background-color: #744e2e;
+}
+
+#theme-toggle {
+  background-color: #8d6748;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+#theme-toggle:hover {
+  background-color: #744e2e;
+  transform: scale(1.05);
+}
+
 
 .intro {
   text-align: center;
@@ -97,11 +133,17 @@ nav a:hover {
   box-shadow: 0 16px 40px rgba(124,94,47,0.18);
 }
 
+.card:hover img {
+  transform: scale(1.08); 
+  filter: grayscale(20%) brightness(1.1); 
+}
+
 .card img {
   width: 100%;
   height: 180px;
   object-fit: cover;
   border-radius: 10px;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .card h3 {
@@ -255,13 +297,25 @@ nav a:hover {
 .gallery-grid img {
   width: 100%;
   border-radius: 14px;
-  transition: transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery-grid img:hover {
+  transform: scale(1.05);       
+  filter: grayscale(15%) brightness(1.05);
+  box-shadow: 0 8px 20px rgba(124,94,47,0.3); 
 }
 
-.gallery-grid img:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
+.card img:hover::after,
+.gallery-grid img:hover::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(141,103,72,0.2); 
+  border-radius: inherit;
+  pointer-events: none;
 }
+
 
 footer {
   text-align: center;
@@ -439,7 +493,6 @@ body.dark-mode mark {
   color: #fff;
 }
 
-/* === Theme Toggle Button === */
 #theme-toggle {
   background: #8d6748;
   color: #fff;
@@ -456,7 +509,6 @@ body.dark-mode mark {
   transform: scale(1.05);
 }
 
-/* === Logo Styling === */
 .logo-container {
   display: flex;
   align-items: center;
@@ -477,11 +529,34 @@ body.dark-mode mark {
   color: #fff;
 }
 
-/* === Night Theme Colors === */
 .night-theme {
   background: #23201d !important;
   color: #f7f3f0 !important;
   transition: background 0.4s, color 0.4s;
+}
+
+#services h2,
+#services h3,
+#services p {
+  color: #2b1e17; 
+}
+
+.night-theme #services h2,
+.night-theme #services h3,
+.night-theme #services p {
+  color: #2b1e17; 
+}
+
+
+.night-theme p, 
+.night-theme a, 
+.night-theme span, 
+.night-theme li, 
+.night-theme h1, 
+.night-theme h4, 
+.night-theme h5, 
+.night-theme h6 {
+  color: #ffebc6; 
 }
 
 .night-theme header {
@@ -591,3 +666,36 @@ body.dark-mode mark {
   color: #ffe7b3 !important;
 }
 
+.night-theme .accordion-content.show{
+  color: black;
+}
+
+
+h2 {
+  display: inline-block; 
+  cursor: default;
+  transition: transform 0.3s ease;
+}
+
+h2:hover {
+  animation: bounceZoom 0.6s ease;
+}
+
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  50% { border-color: transparent; }
+}
+
+#typing-text {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #6e4b33;
+  width: 0;
+  display: inline-block;
+  animation: typing 3s steps(30, end) forwards, blink-caret 0.7s step-end;
+}

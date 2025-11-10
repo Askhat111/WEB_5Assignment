@@ -7,21 +7,29 @@
   <link rel="stylesheet" href="styleAsa.css">
 </head>
 <body>
-  <header>
-    <div class="logo-container">
+<header>
+  <div class="logo-container">
     <img src="logo.png" alt="Site Logo" class="logo-img">
-    <span class="logo-text">My Website</span>
+    <span class="logo-text">Gallery</span>
   </div>
-    <nav>
-      <a href="index.html">Main</a></li>
-      <a href="about.html">About us</a></li>
-      <a href="services.html">Services</a></li>
-      <a href="gallery.html">Gallery</a></li>
-      <a href="blog.html">Blog</a></li>
-      <a href="contact.html">Contacts</a></li>
-    </nav>
-          <button id="theme-toggle">Toggle day/night</button>
-  </header>
+
+  <nav class="navbar">
+    <a class="nav-link" href="index.html">Main</a>
+    <a class="nav-link" href="about.html">About us</a>
+    <a class="nav-link" href="services.html">Menu</a>
+    <a class="nav-link active" href="gallery.html">Gallery</a>
+    <a class="nav-link" href="blog.html">Blog</a>
+    <a class="nav-link" href="contact.html">Contact</a>
+    <a class="nav-link" href="#faq">FAQ</a>
+
+    <select id="languageSelect">
+      <option value="en">EN</option>
+      <option value="ru">RU</option>
+    </select>
+
+    <button id="theme-toggle">Toggle Day/Night</button>
+  </nav>
+</header>
 
   <main>
     <section class="gallery">

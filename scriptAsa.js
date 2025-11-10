@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
           document.getElementById("croissant-desc").textContent = "Freshly baked, buttery and soft pastries every morning.";
           document.getElementById("desserts-desc").textContent = "Sweet treats that pair perfectly with our signature drinks.";
           break;
-
         case "ru":
           document.getElementById("greeting").textContent = "Добро пожаловать в Кафе Asphalt-8";
           document.getElementById("intro-text").textContent = "Ваш идеальный выбор для ароматного кофе, вкусной выпечки и уютной атмосферы.";
@@ -33,43 +32,42 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-const form = document.querySelector(".contact form");
-const formMessage = document.getElementById("formMessage");
+  const form = document.querySelector(".contact form");
+  const formMessage = document.getElementById("formMessage");
 
-if (form) {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-    formMessage.innerHTML = `
-      <div id="progressContainer" style="
-        width: 100%; 
-        background: #ddd; 
-        border-radius: 6px; 
-        overflow: hidden;
-        margin-top: 10px;">
-        <div id="progressBar" style="
-          width: 0%;
-          height: 16px;
-          background: #8d6748;
-          transition: width 2s;"></div>
-      </div>
-      <p style="color: #6e4b33; font-weight: bold;">Your message is sending...</p>
-    `;
+      formMessage.innerHTML = `
+        <div id="progressContainer" style="
+          width: 100%; 
+          background: #ddd; 
+          border-radius: 6px; 
+          overflow: hidden;
+          margin-top: 10px;">
+          <div id="progressBar" style="
+            width: 0%;
+            height: 16px;
+            background: #8d6748;
+            transition: width 2s;"></div>
+        </div>
+        <p style="color: #6e4b33; font-weight: bold;">Your message is sending...</p>
+      `;
 
-    const progressBar = document.getElementById("progressBar");
+      const progressBar = document.getElementById("progressBar");
 
-    setTimeout(() => { progressBar.style.width = "100%"; }, 100);
+      setTimeout(() => { progressBar.style.width = "100%"; }, 100);
 
-    setTimeout(() => {
-      formMessage.innerHTML = "<p style='color: green; font-weight: bold;'>Message sent successfully!</p>";
-      form.reset();
-    }, 2500);
-  });
-}
-
+      setTimeout(() => {
+        formMessage.innerHTML = "<p style='color: green; font-weight: bold;'>Message sent successfully!</p>";
+        form.reset();
+      }, 2500);
+    });
+  }
 
   const counters = document.querySelectorAll(".counter");
-  const speed = 100; 
+  const speed = 100;
   counters.forEach(counter => {
     const updateCount = () => {
       const target = +counter.getAttribute("data-target");
@@ -88,24 +86,32 @@ if (form) {
   const searchBtn = document.getElementById("searchBtn");
   const searchInput = document.getElementById("searchInput");
   if (searchBtn && searchInput) {
+
+    const savedKeyword = localStorage.getItem("faqSearch") || "";
+    searchInput.value = savedKeyword;
+    if (savedKeyword) performSearch(savedKeyword);
+
     searchBtn.addEventListener("click", () => {
       const keyword = searchInput.value.trim();
-      const contents = document.querySelectorAll(".accordion-content");
+      performSearch(keyword);
 
+      localStorage.setItem("faqSearch", keyword);
+    });
+
+    function performSearch(keyword) {
+      const contents = document.querySelectorAll(".accordion-content");
       contents.forEach(content => {
         const text = content.textContent;
         if (keyword.length > 0) {
           const regex = new RegExp(`(${keyword})`, "gi");
           content.innerHTML = text.replace(regex, "<mark>$1</mark>");
         } else {
-          content.innerHTML = text; 
+          content.innerHTML = text;
         }
       });
-    });
+    }
   }
-});
 
-document.addEventListener("DOMContentLoaded", function () {
   if (localStorage.getItem("theme") === "night") {
     document.body.classList.add("night-theme");
   }
@@ -115,8 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
     themeToggle.addEventListener("click", () => {
       const isNight = document.body.classList.toggle("night-theme");
       localStorage.setItem("theme", isNight ? "night" : "day");
-
-      themeToggle.textContent = isNight ? "Toggle day/night" : "Toggle day/night";
+      themeToggle.textContent = isNight ? "☀️" : "🌙";
 
       try {
         const sound = new Audio("sound/click.mp3");
@@ -127,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     themeToggle.textContent = document.body.classList.contains("night-theme")
-      ? "Toggle day/night"
-      : "Toggle day/night";
+      ? "☀️"
+      : "🌙";
   }
 });
