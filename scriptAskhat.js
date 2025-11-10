@@ -1,23 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
- 
+  
   if (localStorage.getItem("theme") === "night") {
     document.body.classList.add("night-theme");
-  } else {
-    document.body.classList.remove("night-theme");
   }
 
-  const themeToggleBtn = document.getElementById("theme-toggle");
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener("click", () => {
+  const themeToggle = document.getElementById("theme-toggle");
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
       const isNight = document.body.classList.toggle("night-theme");
       localStorage.setItem("theme", isNight ? "night" : "day");
+
+      themeToggle.textContent = isNight ? "☀️" : "🌙";
+
       try {
         const sound = new Audio("sound/click.mp3");
         sound.play();
       } catch (e) {
- 
+        console.warn("Sound not found");
       }
     });
+
+    themeToggle.textContent = document.body.classList.contains("night-theme")
+      ? "☀️"
+      : "🌙";
   }
 
   const myForm = document.querySelector("form");
@@ -27,8 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
       let errors = [];
       const name = document.getElementById("name");
       const email = document.getElementById("email");
+      const phone = document.getElementById("phone");
       const message = document.getElementById("message");
-      if (!name || !email || !message) return;
 
       if (!name.value) {
         valid = false;
@@ -38,13 +43,38 @@ document.addEventListener("DOMContentLoaded", function () {
         valid = false;
         errors.push("Enter a valid email address.");
       }
+      
+      if (phone && phone.value) {
+        const digitsOnly = phone.value.replace(/\D/g, '');
+        if (digitsOnly.length !== 11) {
+          valid = false;
+          errors.push("Phone must be 11 digits (e.g., +7 777 123 4567)");
+        }
+      }
+      
       if (!message.value) {
         valid = false;
         errors.push("Message cannot be empty.");
       }
+      
       if (!valid) {
         e.preventDefault();
         alert(errors.join("\n"));
+      }
+    });
+  }
+
+  const phoneInput = document.getElementById("phone");
+  if (phoneInput) {
+    phoneInput.addEventListener("input", function (e) {
+      let value = e.target.value.replace(/\D/g, '');
+      
+      if (value.startsWith('7') || value.startsWith('8')) {
+        value = '7' + value.substring(1);
+      }
+      
+      if (value && !e.target.value.startsWith('+7')) {
+        e.target.value = '+7 ' + value.substring(0, 10);
       }
     });
   }
@@ -101,7 +131,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  
   document.querySelectorAll(".read-more-btn").forEach((button) => {
     button.addEventListener("click", () => {
       const extraContent = button.previousElementSibling;
@@ -112,9 +141,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-//JQuery
+
 $(document).ready(function () {
-  
   const suggestions = [
     "Espresso Perfection",
     "Fresh Pastries",
@@ -126,11 +154,22 @@ $(document).ready(function () {
 
   $("#searchInput").on("keyup input focus", function () {
     const query = $(this).val().toLowerCase();
+ 
+    if (query) {
+      const searches = JSON.parse(localStorage.getItem('searches') || '[]');
+      if (!searches.includes(query)) {
+        searches.push(query);
+        localStorage.setItem('searches', JSON.stringify(searches));
+      }
+      localStorage.setItem('lastSearch', query);
+    }
+
     let filtered = query ? suggestions.filter(title => title.toLowerCase().includes(query)) : suggestions;
     let html = "";
     filtered.forEach(title => {
       html += `<div class='suggestion-item p-2 border-bottom'>${title}</div>`;
     });
+    
     if (filtered.length > 0) {
       $("#suggestions").html(html).show();
     } else {
@@ -167,6 +206,7 @@ $(document).ready(function () {
     }, 2000);
   });
 
+
   function showNotification(message) {
     const $notif = $('<div class="toast-notification"></div>')
       .text(message)
@@ -176,6 +216,7 @@ $(document).ready(function () {
   $("#notifyBtn").click(() =>
     showNotification("Welcome back to Asphalt‑8 Cafe Blog!")
   );
+
 
   function lazyLoadImages() {
     $("img[data-src]").each(function () {
@@ -190,3 +231,4 @@ $(document).ready(function () {
   lazyLoadImages();
   $(window).on("scroll", lazyLoadImages);
 });
+
