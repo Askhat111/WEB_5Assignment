@@ -138,7 +138,7 @@ document.getElementById('searchMovieBtn').addEventListener('click', () => {
 });
 
 
-//  Scroll Bar
+//Scroll Bar
   $(function() {
     $(window).on("scroll", function() {
       var scrollTop = $(window).scrollTop();
@@ -149,3 +149,5 @@ document.getElementById('searchMovieBtn').addEventListener('click', () => {
   });
 
 }); 
+
+
