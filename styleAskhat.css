@@ -264,17 +264,31 @@ footer a {
 }
 
 footer {
-  flex-shrink: 0;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  position: relative;
   background: #3b2414 !important;
   color: #fff !important;
-  padding: 1.2rem 0;
   text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+  width: 100%;
+  position: relative;
+  left: 0;
+  right: 0;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.95em;
+  color: #fff !important;
+  line-height: 1.4;
+}
+
+.night-theme footer {
+  background: #191512 !important;
+  color: #fff !important;
+}
+
+.night-theme footer p {
+  color: #fff !important;
 }
 
 @media (max-width: 900px) {
@@ -386,3 +400,7 @@ h1, h2, h3, h4, h5, h6, p {
   .night-theme .popup-label {
     color: #f7f3f0;
   }
+
+ 
+
+ 
