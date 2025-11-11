@@ -19,13 +19,10 @@
             <a href="gallery.html" class="nav-link">Gallery</a>
             <a href="blog.html" class="nav-link">Blog</a>
             <a href="contact.html" class="nav-link">Contact</a>
-            <button id="theme-toggle">Toggle day/night</button>
-
+         <button id="theme-toggle" class="theme-btn">🌙</button>
         </nav>
     </header>
-
-    <main>
-        
+  <main>   
         <section class="welcome-section">
             <h2>Welcome to "Asphalt-8" Coffeehouse!</h2>
         <div class="snippet">
@@ -35,15 +32,12 @@
                 Enjoy your visit!
             </span>
             <span class="copied-tooltip" style="display:none;">Copied!</span>
-  <button class="copy-btn">Copy</button>
 </div>
 
             <div id="datetime" style="margin: 20px 0 30px 0; font-weight: 800; font-size: 1.50em;"></div>
 
         </section>
-
-
-        
+    
         <section class="card-row">
             <div class="card">
                 <img src="decor.png" alt="decor">
@@ -65,7 +59,29 @@
             </div>
           
         </section>
-        
+            <div id="signupSection">
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+        <input type="text" id="signupName" placeholder="Name" required>
+        <input type="email" id="signupEmail" placeholder="Email" required>
+        <input type="password" id="signupPassword" placeholder="Password" required>
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+<div id="loginSection">
+    <h2>Log In</h2>
+    <form id="loginForm">
+        <input type="email" id="loginEmail" placeholder="Email" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <button type="submit">Log In</button>
+    </form>
+</div>
+<div id="profileSection" style="display:none;">
+    <h2>Profile</h2>
+    <p>Name: <span id="profileName"></span></p>
+    <p>Email: <span id="profileEmail"></span></p>
+    <button id="logoutBtn">Log Out</button>
+</div>
         <section class="gallery">
             <div class="gallery-item">
                 <img src="gallery1.png" alt="Gallery 1">
