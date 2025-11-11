@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   
+  //Theme functionality
   if (localStorage.getItem("theme") === "night") {
     document.body.classList.add("night-theme");
   }
@@ -9,15 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     themeToggle.addEventListener("click", () => {
       const isNight = document.body.classList.toggle("night-theme");
       localStorage.setItem("theme", isNight ? "night" : "day");
-
       themeToggle.textContent = isNight ? "☀️" : "🌙";
-
-      try {
-        const sound = new Audio("sound/click.mp3");
-        sound.play();
-      } catch (e) {
-        console.warn("Sound not found");
-      }
     });
 
     themeToggle.textContent = document.body.classList.contains("night-theme")
@@ -25,7 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
       : "🌙";
   }
 
-  const myForm = document.querySelector("form");
+  //Contact form validation
+  const myForm = document.getElementById("contactForm");
   if (myForm) {
     myForm.addEventListener("submit", function (e) {
       let valid = true;
@@ -35,15 +29,19 @@ document.addEventListener("DOMContentLoaded", function () {
       const phone = document.getElementById("phone");
       const message = document.getElementById("message");
 
-      if (!name.value) {
+      //Name validation
+      if (!name.value.trim()) {
         valid = false;
         errors.push("Name is required.");
       }
+
+      //Email validation
       if (!email.value.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)) {
         valid = false;
         errors.push("Enter a valid email address.");
       }
       
+      //Phone validation (if provided)
       if (phone && phone.value) {
         const digitsOnly = phone.value.replace(/\D/g, '');
         if (digitsOnly.length !== 11) {
@@ -52,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
       
+      //Message validation
       if (!message.value) {
         valid = false;
         errors.push("Message cannot be empty.");
@@ -64,30 +63,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  //Phone number formatting
   const phoneInput = document.getElementById("phone");
   if (phoneInput) {
     phoneInput.addEventListener("input", function (e) {
       let value = e.target.value.replace(/\D/g, '');
-      
-      if (value.startsWith('7') || value.startsWith('8')) {
-        value = '7' + value.substring(1);
-      }
-      
       if (value && !e.target.value.startsWith('+7')) {
         e.target.value = '+7 ' + value.substring(0, 10);
       }
     });
   }
 
+  //Accordion functionality
   document.querySelectorAll(".accordion-toggle").forEach((toggle) => {
     toggle.addEventListener("click", function () {
       const content = this.nextElementSibling;
       const isOpen = content.style.display === "block";
       content.style.display = isOpen ? "none" : "block";
-      content.style.maxHeight = isOpen ? null : content.scrollHeight + "px";
     });
   });
 
+  //Popup functionality
   const openPopupBtn = document.getElementById("openPopup");
   const closePopupBtn = document.getElementById("closePopup");
   const popupForm = document.getElementById("popupForm");
@@ -110,6 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  //Star rating functionality
   document.querySelectorAll(".blog-card").forEach((card) => {
     const stars = card.querySelectorAll(".star");
     let currentRating = 0;
@@ -131,6 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  //Read more/less functionality
   document.querySelectorAll(".read-more-btn").forEach((button) => {
     button.addEventListener("click", () => {
       const extraContent = button.previousElementSibling;
@@ -141,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
+//jQuery functionality
 $(document).ready(function () {
   const suggestions = [
     "Espresso Perfection",
@@ -206,16 +204,17 @@ $(document).ready(function () {
     }, 2000);
   });
 
-
   function showNotification(message) {
     const $notif = $('<div class="toast-notification"></div>')
       .text(message)
       .appendTo("body");
     $notif.fadeIn().delay(3000).fadeOut(() => $notif.remove());
   }
+  
   $("#notifyBtn").click(() =>
     showNotification("Welcome back to Asphalt‑8 Cafe Blog!")
   );
+});
 
 
   function lazyLoadImages() {
