@@ -1,33 +1,10 @@
 body {
-  background: #fdf6f0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  color: #3e2723;
+  background: #f3e9d2;
+  font-family:  'Times New Roman', Times, serif, sans-serif;
+  color: #3e2a17;
   margin: 0;
   padding: 0;
 }
-.night-theme {
-  background: #181818;
-  color: #ececec;
-}
-.night-theme .header {
-  background: #333;
-}
-.night-theme .nav a {
-  color: #ccc;
-}
-.night-theme .card {
-  background: #2a2a2a;
-  border: 1px solid #444;
-  color: #ccc;
-}
-.night-theme .gallery-item {
-  background: #2a2a2a;
-}
-.night-theme .footer {
-  background: #222;
-  color: #ccc;
-}
-
 .welcome-section,
 .about-section {
     text-align: center;
@@ -39,51 +16,47 @@ body {
   border-radius: 8px;    
   text-align: center;   
 }
-.sidebar ul li.active {
-  background: #3A86FF;
-  color: #fff;
-  font-weight: bold;
-  border-radius: 6px;
-}
-.sidebar ul li a {
-  color: inherit;
-  text-decoration: none;
-  display: block;
-  padding: 8px 10px;
-}
-.sidebar ul li.active a {
-  color: #fff;
-}
+
+/* ===== NAVBAR from first code, adapted to .header/.nav/.logo ===== */
 .header {
+  grid-area: header;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 18px 40px;
-  background: #6f4e37;
+  background: #6e4b33 !important; /* из .navbar */
+  color: #fff;
 }
 .logo {
-  color: #fff4e7;
+  color: #fff !important; /* как .navbar-brand */
   font-size: 1.5em;
   font-weight: bold;
 }
 .nav {
   display: flex;
   gap: 30px;
+  list-style: none;      /* чтобы убрать маркеры, если это <ul> */
+  margin: 0;
+  padding: 0;
 }
 .nav a {
-  color: #fff4e7;
+  color: #fff !important;            /* как .nav-link */
   text-decoration: none;
   font-weight: 600;
   font-size: 1.07em;
   letter-spacing: 0.5px;
-  padding: 0 8px;
-  transition: color 0.2s, background 0.2s;
-  border-radius: 4px;
+  padding: 6px 10px;
+  border-radius: 7px;                /* как в hover/active из первого */
+  transition: background 0.2s, color 0.2s;
 }
-.nav a:hover {
-  color: #ffcc80;
-  background: #5a3a22;
+.nav a:hover,
+.nav a:focus,
+.nav a.active {
+  background-color: #8d6748 !important; /* hover/active из первого */
+  color: #fff !important;
 }
+/* ===== end NAVBAR ===== */
+
 .card-row {
   display: flex;
   gap: 38px;
@@ -150,28 +123,8 @@ body {
   grid-template-rows: 80px 1fr 60px;
   min-height: 100vh;
 }
-.header {
-  grid-area: header;
-}
-.sidebar {
-  grid-area: sidebar;
-  background: #f5e9da;
-  padding: 24px 18px;
-}
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-.sidebar a {
-  color: #3e2723;
-  text-decoration: none;
-  display: block;
-  padding: 8px 0;
-  font-weight: 600;
-}
-.sidebar a:hover {
-  color: #ffcc80;
-}
+/* .header уже выше */
+
 .main {
   grid-area: main;
   background: #fff;
@@ -322,13 +275,21 @@ body {
   .carousel { max-width: 98vw; }
   .menu-header { font-size: 1.2em; }
 }
+
+form { margin-bottom: 10px; }
+input { display: block; margin: 5px 0; }
+#profileSection { border-top: 1px solid #ccc; margin-top: 20px; }
 .night-theme {
   background: #181818 ;
   color: #ececec ;
 }
 .night-theme .header {
-  background: #333 ;
-  color: #eee ;
+  background: #191512 !important;  
+  color: #fff !important;
+}
+.night-theme .logo,
+.night-theme .nav a {
+  color: #fff !important;       
 }
 .night-theme .main {
   background: #222 ;
@@ -337,10 +298,6 @@ body {
 .night-theme .sidebar {
   background: #232323 ;
   color: #cab190 ;
-}
-.night-theme .nav a,
-.night-theme .logo {
-  color: #e5ccb1 ;
 }
 .night-theme .footer {
   background: #222 ;
@@ -357,6 +314,21 @@ body {
 .night-theme .gallery-caption {
   color: #e5ccb1 ;
 }
+.theme-btn {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #fff;
+  margin-left: 10px;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.theme-btn:hover {
+  transform: scale(1.15);
+  color: #ffcc80;
+}
+
 #scroll-progress {
   position: fixed;
   top: 0;
