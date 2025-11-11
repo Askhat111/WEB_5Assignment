@@ -216,18 +216,3 @@ $(document).ready(function () {
   );
 });
 
-
-  function lazyLoadImages() {
-    $("img[data-src]").each(function () {
-      if (
-        $(this).offset().top <
-        $(window).scrollTop() + $(window).height() + 100
-      ) {
-        $(this).attr("src", $(this).data("src")).removeAttr("data-src");
-      }
-    });
-  }
-  lazyLoadImages();
-  $(window).on("scroll", lazyLoadImages);
-});
-
