@@ -1,47 +1,97 @@
-//day/hight
 document.addEventListener('DOMContentLoaded', function() {
+  //Authentication
+  function saveUser(user) {
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    users.push(user);
+    localStorage.setItem('users', JSON.stringify(users));
+  }
+  function findUser(email, password) {
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    return users.find(u => u.email === email && u.password === password);
+  }
+
+  function showProfile(user) {
+    document.getElementById('signupSection').style.display = 'none';
+    document.getElementById('loginSection').style.display = 'none';
+    document.getElementById('profileSection').style.display = 'block';
+    document.getElementById('profileName').textContent = user.name;
+    document.getElementById('profileEmail').textContent = user.email;
+  }
+
+  function hideProfile() {
+    document.getElementById('signupSection').style.display = 'block';
+    document.getElementById('loginSection').style.display = 'block';
+    document.getElementById('profileSection').style.display = 'none';
+  }
+
+  const signupForm = document.getElementById('signupForm');
+  const loginForm = document.getElementById('loginForm');
+  const logoutBtn = document.getElementById('logoutBtn');
+
+  if (signupForm) {
+    signupForm.onsubmit = function(e) {
+      e.preventDefault();
+      const name = document.getElementById('signupName').value;
+      const email = document.getElementById('signupEmail').value;
+      const password = document.getElementById('signupPassword').value;
+      let users = JSON.parse(localStorage.getItem('users')) || [];
+      if (users.some(u => u.email === email)) {
+        alert('This email is already registered!');
+        return;
+      }
+      const user = { name, email, password };
+      saveUser(user);
+      alert('Sign up successful! You can now log in.');
+      signupForm.reset();
+    };
+  }
+
+  if (loginForm) {
+    loginForm.onsubmit = function(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      const user = findUser(email, password);
+      if (user) {
+        showProfile(user);
+      } else {
+        alert('Invalid credentials or user not found.');
+      }
+      loginForm.reset();
+    };
+  }
+
+  if (logoutBtn) {
+    logoutBtn.onclick = function() {
+      hideProfile();
+    };
+  }
+
+  //Day/Night Theme
   if (localStorage.getItem("theme") === "night") {
     document.body.classList.add("night-theme");
-  } else {
-    document.body.classList.remove("night-theme");
   }
 
-  const themeToggleBtn = document.getElementById("theme-toggle");
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener("click", () => {
-      const body = document.body;
-      if (body.classList.contains("night-theme")) {
-        body.classList.remove("night-theme");
-        localStorage.setItem("theme", "day");
-      } else {
-        body.classList.add("night-theme");
-        localStorage.setItem("theme", "night");
+  const themeToggle = document.getElementById("theme-toggle");
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const isNight = document.body.classList.toggle("night-theme");
+      localStorage.setItem("theme", isNight ? "night" : "day");
+      themeToggle.textContent = isNight ? "☀️" : "🌙";
+      try {
+        const sound = new Audio("sound/click.mp3");
+        sound.play();
+      } catch (e) {
+        console.warn("Sound not found");
       }
-      const sound = new Audio("sound/click.mp3");
-      sound.play();
     });
+
+    themeToggle.textContent = document.body.classList.contains("night-theme")
+      ? "☀️"
+      : "🌙";
   }
 
-  // date
-  const datetimeDiv = document.getElementById('datetime');
-  function updateDateTime() {
-    if (datetimeDiv) {
-      const now = new Date();
-      const options = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-      };
-      const formattedDate = now.toLocaleString('en-US', options);
-      datetimeDiv.textContent = formattedDate;
-    }
-  }
-  updateDateTime();
-  setInterval(updateDateTime, 60000);
-
-  // carousel
+  //Carousel
   const track = document.querySelector('.carousel-track');
   if(track){
     const slides = Array.from(track.children);
@@ -63,74 +113,39 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     updateSlide();
   }
+//api
+document.getElementById('searchMovieBtn').addEventListener('click', () => {
+  const title = document.getElementById('movieTitle').value;
+  const apiKey = '51c55888'; 
+  const url = `https://www.omdbapi.com/?apikey=${apiKey}&t=${encodeURIComponent(title)}`;
 
-  // change bg
-  let colorBtn = document.getElementById('colorBtn');
-  let colorIndex = 0;
-  const bgcolors = ['#fdf6f0', '#f5e9da', '#ffe4c4', '#e8c1a0', '#d4af7a', '#795785', '#e3a978', '#c3346d'];
-  if(colorBtn) {
-    colorBtn.onclick = function() {
-      colorIndex = (colorIndex + 1) % bgcolors.length;
-      let mainBlock = document.querySelector('.main');
-      if (mainBlock) {
-        mainBlock.style.background = bgcolors[colorIndex];
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      if(data.Response === "True") {
+        document.getElementById('movieResult').innerHTML = `
+          <h3>${data.Title} (${data.Year})</h3>
+          <img src="${data.Poster}" alt="${data.Title}" style="max-width:200px;">
+          <p>${data.Plot}</p>
+        `;
+      } else {
+        document.getElementById('movieResult').textContent = 'Фильм не найден';
       }
-    };
-  }
-
-  // Show time
-  const button = document.getElementById('show-time-btn');
-  const output = document.getElementById('time-output');
-  if(button && output) {
-    button.addEventListener('click', function() {
-      const now = new Date().toLocaleTimeString();
-      output.textContent = 'Current time ' + now;
+    })
+    .catch(() => {
+      document.getElementById('movieResult').textContent = 'Ошибка при запросе';
     });
-  }
-
-  // sidebar
-  const sidebarItems = document.querySelectorAll('.sidebar ul li');
-  let sidebarIndex = 0;
-  if(sidebarItems.length > 0){
-    sidebarItems[sidebarIndex].classList.add('active');
-    document.addEventListener('keydown', function(e) {
-      sidebarItems[sidebarIndex].classList.remove('active');
-      if (e.key === 'ArrowDown') {
-        sidebarIndex = (sidebarIndex + 1) % sidebarItems.length;
-      } else if (e.key === 'ArrowUp') {
-        sidebarIndex = (sidebarIndex - 1 + sidebarItems.length) % sidebarItems.length;
-      } else if (e.key === 'Enter') {
-        const link = sidebarItems[sidebarIndex].querySelector('a');
-        if(link) {
-          window.location.href = link.href;
-        }
-      }
-      sidebarItems[sidebarIndex].classList.add('active');
-    });
-  }
 });
 
 
-$(document).ready(function() {
-  // copy
-  $(".copy-btn").on("click", function() {
-    var text = $(this).siblings(".code-text").text();
-    var $tooltip = $(this).siblings(".copied-tooltip");
-    navigator.clipboard.writeText(text).then(function() {
-      $tooltip.show();
-      $(".copy-btn").text("✔");
-      setTimeout(function() {
-        $tooltip.hide();
-        $(".copy-btn").text("Copy");
-      }, 1200);
+//  Scroll Bar
+  $(function() {
+    $(window).on("scroll", function() {
+      var scrollTop = $(window).scrollTop();
+      var docHeight = $(document).height() - $(window).height();
+      var scrollPercent = (scrollTop / docHeight) * 100;
+      $("#scroll-progress").css("width", scrollPercent + "%");
     });
   });
 
-  // scroll bar
-  $(window).on("scroll", function() {
-    var scrollTop = $(window).scrollTop();
-    var docHeight = $(document).height() - $(window).height();
-    var scrollPercent = (scrollTop / docHeight) * 100;
-    $("#scroll-progress").css("width", scrollPercent + "%");
-  });
-});
+}); 
