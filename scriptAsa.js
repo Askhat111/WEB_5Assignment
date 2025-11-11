@@ -7,30 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const languageSelect = document.getElementById("languageSelect");
-  if (languageSelect) {
-    languageSelect.addEventListener("change", () => {
-      const lang = languageSelect.value;
-      switch (lang) {
-        case "en":
-          document.getElementById("greeting").textContent = "Welcome to Café Asphalt-8";
-          document.getElementById("intro-text").textContent = "Your perfect stop for rich coffee, tasty pastries, and a cozy vibe.";
-          document.getElementById("service-title").textContent = "Our Specialties";
-          document.getElementById("espresso-desc").textContent = "Strong and aromatic coffee for real enthusiasts.";
-          document.getElementById("croissant-desc").textContent = "Freshly baked, buttery and soft pastries every morning.";
-          document.getElementById("desserts-desc").textContent = "Sweet treats that pair perfectly with our signature drinks.";
-          break;
-        case "ru":
-          document.getElementById("greeting").textContent = "Добро пожаловать в Кафе Asphalt-8";
-          document.getElementById("intro-text").textContent = "Ваш идеальный выбор для ароматного кофе, вкусной выпечки и уютной атмосферы.";
-          document.getElementById("service-title").textContent = "Наши Специальные Предложения";
-          document.getElementById("espresso-desc").textContent = "Крепкий и ароматный кофе для настоящих ценителей.";
-          document.getElementById("croissant-desc").textContent = "Свежие, масляные и мягкие круассаны каждое утро.";
-          document.getElementById("desserts-desc").textContent = "Сладости, идеально сочетающиеся с нашими фирменными напитками.";
-          break;
-      }
-    });
-  }
 
   const form = document.querySelector(".contact form");
   const formMessage = document.getElementById("formMessage");
@@ -136,3 +112,4 @@ document.addEventListener("DOMContentLoaded", () => {
       : "🌙";
   }
 });
+
